@@ -366,14 +366,13 @@ export default function App() {
             <ScrollGlassReveal>
               <CTABanner onScheduleCall={() => handleBookConsultation('Strategic Launch Call')} />
             </ScrollGlassReveal>
-
-            {/* Section 12: Premium Footer links & brand copyrights */}
-            <Footer 
-              onNavigate={handleNavigation} 
-              onContactEmail={() => handleBookConsultation('Support Email Inquiry')} 
-            />
           </>
         )}
+
+        <Footer 
+          onNavigate={handleNavigation} 
+          onContactEmail={() => handleBookConsultation('Support Email Inquiry')} 
+        />
 
         {/* Floating telemetry Event ledger stream positioned on screen for premium transparency */}
         <div className="fixed bottom-6 right-6 z-40 max-w-xs hidden xl:block bg-black/95 border border-white/10 rounded-2xl p-4 shadow-2xl backdrop-blur-md">
