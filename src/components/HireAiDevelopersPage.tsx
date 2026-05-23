@@ -99,49 +99,49 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
   const outperformData = [
     {
       criteria: 'Expertise',
-      peerbits: 'Pre-vetted in ML, NLP, CV, MLOps & GenAI',
+      spaceOn: 'Pre-vetted in ML, NLP, CV, MLOps & GenAI',
       inhouse: 'Varies; frequent upskilling needed',
       freelancers: 'Generalists; limited deep AI knowledge'
     },
     {
       criteria: 'Scalability',
-      peerbits: 'Scale instantly—no hiring delays',
+      spaceOn: 'Scale instantly—no hiring delays',
       inhouse: 'Slow scaling due to hiring cycles',
       freelancers: 'Limited by individual capacity'
     },
     {
       criteria: 'Hiring Speed',
-      peerbits: 'Onboard in 48 hours',
+      spaceOn: 'Onboard in 48 hours',
       inhouse: '4-8 weeks',
       freelancers: '1-2 weeks with risk'
     },
     {
       criteria: 'Delivery Speed',
-      peerbits: 'Fast prototyping & CI/CD',
+      spaceOn: 'Fast prototyping & CI/CD',
       inhouse: 'Slower due to process overhead',
       freelancers: 'Inconsistent; depends on availability'
     },
     {
       criteria: 'Reliability',
-      peerbits: 'Dedicated, managed AI teams',
+      spaceOn: 'Dedicated, managed AI teams',
       inhouse: 'Reliable but costly and less AI-focused',
       freelancers: 'Unpredictable commitment'
     },
     {
       criteria: 'Tool Access',
-      peerbits: 'Access to enterprise AI tools',
+      spaceOn: 'Access to enterprise AI tools',
       inhouse: 'Needs internal purchase/setup',
       freelancers: 'Mostly open-source or personal tools'
     },
     {
       criteria: 'Cost Efficiency',
-      peerbits: 'Up to 40% savings vs local hires',
+      spaceOn: 'Up to 40% savings vs local hires',
       inhouse: 'High fixed costs',
       freelancers: 'Cheaper, but inconsistent quality'
     },
     {
       criteria: 'Security',
-      peerbits: 'Strict NDAs, secure environments, AI compliance',
+      spaceOn: 'Strict NDAs, secure environments, AI compliance',
       inhouse: 'Controlled but may lack AI-specific safeguards',
       freelancers: 'High IP & data risks'
     }
@@ -220,7 +220,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
   // FAQs
   const faqs = [
     {
-      q: 'How do I hire remote AI developers with Peerbits?',
+      q: 'How do I hire remote AI developers with SpaceOn Technology?',
       a: 'Share your needs, and we\'ll match you with pre-vetted AI developers ready to join your team fast and hassle-free.'
     },
     {
@@ -621,7 +621,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <p className="text-[12.5px] text-white/65 leading-relaxed text-left">
-                    Let Peerbits handle the end-to-end AI development lifecycle. From model selection to production deployment and monitoring, we manage everything so you can focus on outcomes.
+                    Let SpaceOn Technology handle the end-to-end AI development lifecycle. From model selection to production deployment and monitoring, we manage everything so you can focus on outcomes.
                   </p>
                   
                   <div className="mt-6 space-y-2 border-t border-white/5 pt-4">
@@ -665,7 +665,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
               <thead>
                 <tr className="border-b border-white/10 bg-emerald-500/10 font-mono text-xs text-emerald-400 font-extrabold uppercase select-none">
                   <th className="p-4 md:p-5">Criteria</th>
-                  <th className="p-4 md:p-5">Peerbits AI developers</th>
+                  <th className="p-4 md:p-5">SpaceOn Technology AI developers</th>
                   <th className="p-4 md:p-5">In-house teams</th>
                   <th className="p-4 md:p-5">Freelancers</th>
                 </tr>
@@ -677,7 +677,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
                       {row.criteria}
                     </td>
                     <td className="p-4 md:p-5 text-emerald-400 font-bold bg-emerald-950/20 shadow-[inset_1px_0_0_rgba(16,185,129,0.05)]">
-                      {row.peerbits}
+                      {row.spaceOn}
                     </td>
                     <td className="p-4 md:p-5 text-white/60">
                       {row.inhouse}
