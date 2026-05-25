@@ -316,7 +316,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
       tagline: 'High-speed, SEO-optimized incremental architectures serving globally distributed static caches.',
       description: 'We construct bleeding-edge web infrastructures built to maximize user session retention, support complex localized translation grids, and satisfy intensive Core Web Vitals targets under heavy traffic loads.',
       icon: Globe,
-      accentGlow: 'from-[#61DAFB]/20 to-transparent',
+      accentGlow: 'from-emerald-500/10 to-transparent',
       bannerImage: 'https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2000&auto=format&fit=crop',
       architectureTitle: 'Edge Hydration & Static Generation Pipelines',
       architectureSteps: [
@@ -378,7 +378,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
       tagline: 'High-fidelity mobile experiences leveraging robust react-native or native cross-engine runtimes.',
       description: 'We construct beautiful, high-performing native iOS and Android apps. Features include integrated haptic layout loops, offline local database synchronization, geo-sensors, biometric authentications, and smooth 120Hz system frame transitions.',
       icon: Smartphone,
-      accentGlow: 'from-indigo-500/20 to-transparent',
+      accentGlow: 'from-emerald-500/10 to-transparent',
       bannerImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2000&auto=format&fit=crop',
       architectureTitle: 'Hermes Engine UI Thread & Bi-directional Sync',
       architectureSteps: [
@@ -409,7 +409,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
       tagline: 'Immersive screen designs backed by clear design standards, structured templates, and customized variables.',
       description: 'We translate your company vision into fully realized digital interactive worlds. Combining clean typographic scales, eye-safe high-contrast dark visual tones, bespoke layout structures, and delicate responsive hover effects to create emotional customer connections.',
       icon: Code2,
-      accentGlow: 'from-pink-500/20 to-transparent',
+      accentGlow: 'from-emerald-500/10 to-transparent',
       bannerImage: 'https://images.unsplash.com/photo-1541462608141-2f58c6e40263?q=80&w=2000&auto=format&fit=crop',
       architectureTitle: 'Figma to Code Layout Physics Workflow',
       architectureSteps: [
@@ -440,7 +440,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
       tagline: 'Retrieval-Augmented Generation models combining semantic queries with automated task controllers.',
       description: 'We orchestrate smart technologies directly into your business databases. By configuring system workflows, training specialized task prompts, implementing local vector stores, and setting up automated task agents, we turn complex data structures into smart, actionable workflows.',
       icon: Sparkles,
-      accentGlow: 'from-[#ff9900]/20 to-transparent',
+      accentGlow: 'from-emerald-500/20 to-transparent',
       bannerImage: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=2000&auto=format&fit=crop',
       architectureTitle: 'Vector Search Embeddings & RAG Process Flow',
       architectureSteps: [
@@ -471,7 +471,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
       tagline: 'A highly secure, auto-scaling Kubernetes setup running container workflows with absolute consistency.',
       description: 'We design reliable, secure, and cost-effective cloud setups. By creating IaC files, setting up automated CI/CD codes, configuring secure virtual networks, and implementing continuous performance tracking, we keep your databases running smoothly around the clock.',
       icon: Cloud,
-      accentGlow: 'from-[#3b82f6]/20 to-transparent',
+      accentGlow: 'from-emerald-500/10 to-transparent',
       bannerImage: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2000&auto=format&fit=crop',
       architectureTitle: 'IaC Automation & Zero-Downtime Deployment Flow',
       architectureSteps: [
@@ -520,79 +520,107 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
   };
 
   return (
-    <div className="w-full relative bg-[#030303] min-h-screen text-white">
-      {/* Immersive ambient gradient nodes */}
-      <div className={`absolute top-0 left-0 w-[50vw] h-[40vh] bg-gradient-to-br ${activeService.accentGlow} blur-[120px] pointer-events-none opacity-40`} />
-      <div className="absolute top-[35%] right-0 w-[30vw] h-[30vh] bg-zinc-900/40 blur-[100px] pointer-events-none" />
+    <div className="w-full relative bg-[#000000] min-h-screen text-white pt-[84px]" id="service-detail-root">
+      
+      {/* Modern dark green gradient background spot for premium contrast */}
+      <div className="absolute inset-0 w-full h-full -z-20 select-none pointer-events-none bg-[#000000]">
+        <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-emerald-950/20 rounded-full filter blur-[130px] animate-pulse`} />
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-emerald-900/10 rounded-full filter blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-emerald-500/5 rounded-full filter blur-[120px]" />
+      </div>
 
-      {/* Hero header space */}
-      <section className="relative w-full max-w-7xl mx-auto px-5 pt-[140px] md:pt-[160px] pb-12 z-10">
-        
-        {/* Navigation Breadcrumb & Back control */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
-          {/* Breadcrumb path */}
-          <div className="flex items-center gap-3 text-xs font-mono text-white/40 uppercase tracking-widest select-none">
-            <span className="hover:text-white transition-colors cursor-pointer" onClick={onBack}>SPACEON</span>
-            <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-            <span className="hover:text-white transition-colors cursor-pointer" onClick={onBack}>SERVICES CATALOGUE</span>
-            <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-            <span className="text-white font-semibold">{activeService.title}</span>
-          </div>
+      {/* Tiny abstract background grid lines */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0c1d11_1px,transparent_1px),linear-gradient(to_bottom,#0c1d11_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-25 pointer-events-none -z-10" />
 
-          {/* Interactive Back button */}
-          <button 
-            onClick={onBack}
-            className="self-start sm:self-center flex items-center gap-2.5 px-4 py-2 border border-white/10 hover:border-white/20 hover:bg-white/5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 focus:outline-none"
-            id="back-to-catalogue-head"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>RETURN TO SUITE</span>
-          </button>
-        </div>
+      {/* Primary header back row to blend with premium feel */}
+      <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] pt-8 flex items-center justify-between relative z-10">
+        <button
+          onClick={onBack}
+          className="group inline-flex items-center gap-2 text-xs md:text-sm font-bold font-mono tracking-wider text-white/60 hover:text-emerald-400 transition-colors cursor-pointer"
+          id="back-to-home-btn"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>BACK TO SOVEREIGN SUITE</span>
+        </button>
 
-        {/* Display profile block */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
-          <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/80">
-                <ServiceIcon className="w-5.5 h-5.5" />
-              </div>
-              <span className="text-xs font-mono tracking-[0.25em] text-white/50 uppercase">
+        <span className="text-[10px] font-mono tracking-[0.2em] text-emerald-500/80 uppercase px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+          PRE-VETTED TALENT &middot; ONLINE
+        </span>
+      </div>
+
+      {/* Hero Section Grid layout matching the AI Hire page layout */}
+      <section className="relative w-full z-10 !overflow-visible">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] pt-12 pb-20 relative z-10 !overflow-visible">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center !overflow-visible">
+            
+            {/* Left Column Content */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left relative z-20">
+              <span className="text-[11.5px] font-mono tracking-[0.25em] text-[#00df89] font-extrabold uppercase mb-4 block">
                 {activeService.subtitle}
               </span>
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-extrabold leading-[1.08] tracking-tight text-white mb-6">
+                Engineered <span className="text-[#00df89]">{activeService.title}</span> <br />
+                for global scale
+              </h1>
+              <p className="text-[14px] sm:text-[15.5px] text-white/60 max-w-[580px] leading-relaxed mb-8">
+                {activeService.tagline}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <button
+                  onClick={() => onBookConsultation(activeService.title)}
+                  className="rounded-full bg-[#00df89] hover:bg-[#00f093] active:scale-95 text-black font-extrabold px-10 py-4.5 text-[14px] tracking-wide transition-all duration-300 shadow-[0_0_20px_rgba(0,223,137,0.3)] hover:shadow-[0_0_40px_rgba(0,223,137,0.55)] cursor-pointer text-center"
+                >
+                  Book Consultation
+                </button>
+                <button
+                  onClick={onBack}
+                  className="rounded-full border border-white/10 hover:border-white/20 hover:bg-white/5 text-white/80 hover:text-white px-8 py-4.5 text-[13px] font-bold uppercase transition-all duration-300 text-center"
+                >
+                  Return to Suite
+                </button>
+              </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white font-sans max-w-3xl leading-[1.05]">
-              {activeService.title}
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-white/70 max-w-4xl font-medium leading-relaxed">
-              {activeService.tagline}
-            </p>
-          </div>
+            {/* Right Column Illustration */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end relative select-none !overflow-visible z-10 mt-12 lg:mt-0">
+              <div className="w-[320px] h-[320px] md:w-[420px] md:h-[420px] lg:w-[520px] lg:h-[520px] relative flex items-center justify-center !overflow-visible">
+                {/* Glow 1: Main Glow with consistent green color, responsive sizes & blurring to avoid circles in mobile */}
+                <div 
+                  className="absolute rounded-full pointer-events-none z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] md:w-[600px] md:h-[600px] lg:w-[750px] lg:h-[750px] blur-[45px] md:blur-[80px]"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(34,197,94,0.35) 0%, rgba(34,197,94,0.15) 35%, transparent 70%)',
+                  }}
+                />
 
-          {/* Action buttons on page hero */}
-          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto h-full lg:justify-end">
-            <button
-              onClick={() => onBookConsultation(activeService.title)}
-              className="px-6 py-3.5 rounded-xl bg-white hover:bg-neutral-100 text-black text-xs font-semibold flex items-center justify-center gap-1.5 focus:outline-none w-full transition-all hover:scale-[1.01] active:scale-95"
-            >
-              <span>Book Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onBack}
-              className="px-6 py-3.5 rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/5 text-white/80 hover:text-white text-xs font-medium focus:outline-none w-full transition-all"
-            >
-              Back to Services
-            </button>
+                {/* Glow 2: Secondary Ambient Glow with consistent green color, responsive sizes & blurring to avoid circles in mobile */}
+                <div 
+                  className="absolute rounded-full pointer-events-none z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[850px] md:h-[850px] lg:w-[1100px] lg:h-[1100px] blur-[60px] md:blur-[110px]"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 70%)',
+                  }}
+                />
+                
+                <img 
+                  src={activeService.bannerImage} 
+                  alt={activeService.title} 
+                  className="w-full h-full object-cover relative z-10 filter drop-shadow-[0_0_35px_rgba(16,185,129,0.35)] rounded-2xl border border-white/10"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
+      </section>
 
-        {/* Glass in-page sub navigation */}
-        <div className="border-b border-white/[0.08] flex gap-8 text-xs font-mono tracking-widest uppercase mb-12 overflow-x-auto whitespace-nowrap">
-          <button
-            onClick={() => setActiveTab('overview')}
+        {/* Content of specifications below matching the bounds */}
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px]">
+          
+          {/* Glass in-page sub navigation */}
+          <div className="border-b border-white/[0.08] flex gap-8 text-xs font-mono tracking-widest uppercase mb-12 overflow-x-auto whitespace-nowrap">
+            <button
+              onClick={() => setActiveTab('overview')}
             className={`pb-4 relative font-medium transition-colors focus:outline-none ${
               activeTab === 'overview' ? 'text-white' : 'text-white/40 hover:text-white/70'
             }`}
@@ -911,6 +939,7 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
             </motion.div>
           )}
         </div>
+      </div>
 
         {/* Security / Delivery confirmation band at bottom */}
         <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6 pb-[120px]">
@@ -927,7 +956,6 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
           </button>
         </div>
 
-      </section>
-    </div>
-  );
-}
+      </div>
+    );
+  }

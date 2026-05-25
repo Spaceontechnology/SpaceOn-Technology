@@ -22,6 +22,19 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ onSelectService, onViewServiceDetail }: ServicesSectionProps) {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [clickedCardId, setClickedCardId] = useState<string | null>(null);
+
+  const handleCardClick = (serviceId: string) => {
+    if (serviceId === 'web-dev') {
+      setClickedCardId(serviceId);
+      setTimeout(() => {
+        setClickedCardId(null);
+        onViewServiceDetail(serviceId);
+      }, 150);
+    } else {
+      onViewServiceDetail(serviceId);
+    }
+  };
 
   const servicesData: (ServiceItem & { subtitle: string; icon: any; accentColor: string })[] = [
     {
@@ -31,7 +44,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Engineered high-speed web solutions utilizing optimized server-side rendering and incremental hydration protocols.',
       icon: Globe,
       features: ['Next.js & React Architectures', 'Edge Runtime Deployment', 'Automated SEO Hydration', 'Headless Content Hubs'],
-      accentColor: 'from-[#ffffff]/20 to-[#666666]/10'
+      accentColor: 'from-emerald-500/8 to-transparent'
     },
     {
       id: 'saas-dev',
@@ -40,7 +53,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Distributed multitenant software frameworks incorporating complex data partition and secure microsecond billing integrations.',
       icon: Layers,
       features: ['Stripe Billing Engines', 'RBAC & Identity Guard', 'Real-time WebSocket Push', 'SLA Optimization Support'],
-      accentColor: 'from-[#f3f4f6]/10 to-[#1f2937]/5'
+      accentColor: 'from-emerald-500/10 to-transparent'
     },
     {
       id: 'mobile-app',
@@ -49,7 +62,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Lightweight React Native and Flutter engines designed for ultra-smooth UI threads and full hardware-sensor integration.',
       icon: Smartphone,
       features: ['React Native & Expo Cores', 'Native Haptic Feedback', 'Offline Local Database Sync', 'App Store Delivery pipeline'],
-      accentColor: 'from-[#e5e7eb]/10 to-[#374151]/5'
+      accentColor: 'from-emerald-500/8 to-transparent'
     },
     {
       id: 'ui-ux',
@@ -58,7 +71,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Bespoke design tokens paired with immersive layout physics creating emotional, highly distinctive brand interfaces.',
       icon: Code2,
       features: ['Figma Custom Tokenization', 'Interactive Micro-motion', 'Fluid Bento Grid Wireframes', 'W3C Accessible Contrast Standards'],
-      accentColor: 'from-[#000000]/40 to-[#4b5563]/10'
+      accentColor: 'from-emerald-500/12 to-transparent'
     },
     {
       id: 'ai-automation',
@@ -67,7 +80,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Advanced Retrieval-Augmented Generation architectures embedded with localized vector databases for reasoning systems.',
       icon: Sparkles,
       features: ['Generative LLM Pipelines', 'RAG Embeddings Databases', 'Autonomous System Agents', 'Custom NLP Prompting Tuning'],
-      accentColor: 'from-[#ffffff]/15 to-[#3b82f6]/5'
+      accentColor: 'from-emerald-500/15 to-transparent'
     },
     {
       id: 'cloud-devops',
@@ -76,7 +89,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
       description: 'Highly available Kubernetes frameworks orchestrating microservices with declarative traffic policies and health checks.',
       icon: Cloud,
       features: ['Terraform IaC Configurations', 'GitHub Actions Actions CI/CD', 'Docker Orchestrated Swarms', 'Prometheus & eBPF Telemetry'],
-      accentColor: 'from-[#ffffff]/20 to-[#10b981]/5'
+      accentColor: 'from-emerald-500/10 to-transparent'
     }
   ];
 
@@ -111,7 +124,7 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
                 key={service.id}
                 onMouseEnter={() => setHoveredCard(service.id)}
                 onMouseLeave={() => setHoveredCard(null)}
-                onClick={() => onViewServiceDetail(service.id)}
+                onClick={() => handleCardClick(service.id)}
                 initial={{ 
                   opacity: 0, 
                   backdropFilter: 'blur(25px)',
@@ -134,9 +147,13 @@ export default function ServicesSection({ onSelectService, onViewServiceDetail }
                   delay: idx * 0.08,
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="relative bg-gradient-to-b from-white/[0.04] to-white/[0.012] backdrop-blur-md rounded-[32px] p-8 overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between min-h-[420px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/[0.06] hover:border-white/[0.18]"
+                animate={clickedCardId === service.id ? { scale: 0.95 } : undefined}
+                className={`relative bg-gradient-to-b from-white/[0.04] to-white/[0.012] backdrop-blur-md rounded-[32px] p-8 overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between min-h-[420px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)] hover:shadow-emerald-500/20 border border-white/[0.06] hover:border-white/[0.18] ${
+                  service.id === 'web-dev' ? 'transition-transform duration-150 ease-out' : ''
+                }`}
                 id={`service-card-${service.id}`}
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -6, scale: 1.05 }}
+                whileTap={service.id === 'web-dev' ? { scale: 0.95 } : undefined}
               >
                 {/* Custom inner gradient blob that activates on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />

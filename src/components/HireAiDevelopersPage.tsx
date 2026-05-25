@@ -6,6 +6,7 @@ import {
   Globe, Database, Server, Smartphone, Monitor, AlertCircle, RefreshCw, BarChart2,
   ClipboardCheck, PenTool, Bug, CloudUpload
 } from 'lucide-react';
+import ScrollGlassReveal from './ScrollGlassReveal';
 
 interface HireAiPageProps {
   onBack: () => void;
@@ -242,15 +243,15 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-[#030704] text-white overflow-x-hidden font-sans pt-[84px]">
+    <div className="relative w-full min-h-screen bg-[#000000] text-white overflow-x-hidden font-sans pt-[84px]">
       
       {/* Hero Banner Container with custom background webp banner image */}
-      <div className="relative w-full bg-[#030704] overflow-hidden border-b border-white/5">
+      <div className="relative w-full bg-[#000000] !overflow-visible border-b border-white/5">
         
         {/* Modern dark green gradient background spot for premium contrast */}
-        <div className="absolute inset-0 w-full h-full -z-20 select-none pointer-events-none bg-[#030704]">
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-emerald-950/25 rounded-full filter blur-[130px] animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-emerald-900/15 rounded-full filter blur-[150px]" />
+        <div className="absolute inset-0 w-full h-full -z-20 select-none pointer-events-none bg-[#000000]">
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-emerald-950/20 rounded-full filter blur-[130px] animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-emerald-900/10 rounded-full filter blur-[150px]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-emerald-500/5 rounded-full filter blur-[120px]" />
         </div>
 
@@ -258,7 +259,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0c1d11_1px,transparent_1px),linear-gradient(to_bottom,#0c1d11_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-25 pointer-events-none -z-10" />
 
         {/* Primary header back row to blend with premium feel */}
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] pt-8 flex items-center justify-between relative z-10">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] pt-8 flex items-center justify-between relative z-10">
           <button
             onClick={onBack}
             className="group inline-flex items-center gap-2 text-xs md:text-sm font-bold font-mono tracking-wider text-white/60 hover:text-emerald-400 transition-colors cursor-pointer"
@@ -273,9 +274,9 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
         </div>
 
         {/* SECTION 1: HERO CONTAINER (Seamless & Clean Layout matching original design) */}
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] pt-12 pb-24 relative z-10">
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 flex flex-col items-start text-left relative z-10">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] pt-12 pb-24 relative z-10 !overflow-visible">
+          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center !overflow-visible">
+            <div className="lg:col-span-7 flex flex-col items-start text-left relative z-20">
               <span className="text-[11.5px] font-mono tracking-[0.25em] text-emerald-400 font-extrabold uppercase mb-4">
                 HIRE AI DEVELOPERS & ENGINEERS
               </span>
@@ -294,16 +295,28 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
             </div>
 
             {/* High resolution original AI Developers Banner asset on right-side */}
-            <div className="lg:col-span-5 flex justify-center relative select-none">
-              <div className="w-full max-w-[500px] relative flex items-center justify-center">
-                
-                {/* Clean background ambient light highlight */}
-                <div className="absolute inset-0 bg-emerald-500/10 filter blur-[80px] rounded-full pointer-events-none animate-pulse" />
+            <div className="lg:col-span-5 flex justify-center lg:justify-end relative select-none !overflow-visible z-10 mt-12 lg:mt-0">
+              <div className="w-[320px] h-[320px] md:w-[420px] md:h-[420px] lg:w-[520px] lg:h-[520px] relative flex items-center justify-center !overflow-visible">
+                {/* Glow 1: Main Glow with consistent green color, responsive sizes & blurring to avoid circles in mobile */}
+                <div 
+                  className="absolute rounded-full pointer-events-none z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] md:w-[600px] md:h-[600px] lg:w-[750px] lg:h-[750px] blur-[45px] md:blur-[80px]"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(34,197,94,0.35) 0%, rgba(34,197,94,0.15) 35%, transparent 70%)',
+                  }}
+                />
+
+                {/* Glow 2: Secondary Ambient Glow with consistent green color, responsive sizes & blurring to avoid circles in mobile */}
+                <div 
+                  className="absolute rounded-full pointer-events-none z-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[850px] md:h-[850px] lg:w-[1100px] lg:h-[1100px] blur-[60px] md:blur-[110px]"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 70%)',
+                  }}
+                />
                 
                 <img 
                   src="https://patelarsh.com/SpaceOn%20Logo/Resourses%20Website/hire-ai-developers-banner.webp" 
                   alt="Intellectual AI Node Core Graphic" 
-                  className="w-full h-auto object-contain transition-transform duration-700 ease-out hover:scale-105"
+                  className="w-full h-full object-contain relative z-10 transition-transform duration-700 ease-out hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -313,50 +326,87 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </div>
 
       {/* SECTION 2: AWARDS & ACCOLADES */}
-      <section className="bg-white text-black py-20 border-y border-neutral-200">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] text-center">
-          <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-neutral-900">
-            <span className="text-emerald-600">Awards & accolades</span> we’re proud of
+      <section className="bg-[#0A0A0A] text-white py-20 border-y border-white/5 relative overflow-hidden">
+        {/* Glow node */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[150px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] text-center relative z-10">
+          <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-white animate-fade-in">
+            <span className="text-emerald-400">Awards & accolades</span> we’re proud of
           </h2>
-          <p className="text-neutral-500 text-[14px] md:text-[15px] max-w-[650px] mx-auto mt-3 leading-relaxed">
+          <p className="text-white/60 text-[14px] md:text-[15px] max-w-[650px] mx-auto mt-3 leading-relaxed">
             See how we've helped businesses grow with our innovative app solutions crafted by our expert mobile developers.
           </p>
-
+ 
           {/* Elegant light grid listing the exact key brands from screen model */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
             
             {[
-              { name: 'Clutch', desc: 'Top AI Developers' },
+              { 
+                name: 'Clutch', 
+                desc: 'Top AI Developers',
+                logoUrl: 'https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg',
+                isRound: true
+              },
               { name: 'siliconindia', desc: 'Global Brand Partner' },
-              { name: 'GoodFirms', desc: 'Highest Rated agency' },
+              { 
+                name: 'GoodFirms', 
+                desc: 'Highest Rated agency',
+                logoUrl: 'https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png'
+              },
               { name: 'appfutura', desc: 'Certified Tech Force' },
               { name: 'EXTRACT', desc: 'Audited Delivery Hub' },
               { name: 'Forbes', desc: 'Featured Innovation' },
-              { name: 'Clutch Badge', desc: 'Continuous Excellence' },
-              { name: 'Clutch Medal', desc: 'Elite Staffing 2026' },
-              { name: 'GoodFirms Medal', desc: 'Verified Top Firm' },
+              { 
+                name: 'Clutch Badge', 
+                desc: 'Continuous Excellence',
+                logoUrl: 'https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg',
+                isRound: true
+              },
+              { 
+                name: 'Clutch Medal', 
+                desc: 'Elite Staffing 2026',
+                logoUrl: 'https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg',
+                isRound: true
+              },
+              { 
+                name: 'GoodFirms Medal', 
+                desc: 'Verified Top Firm',
+                logoUrl: 'https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png'
+              },
               { name: 'TOP APP CREATORS', desc: 'Sovereign Solutions' }
             ].map((award, index) => (
               <div 
                 key={index} 
-                className="bg-neutral-50 border border-neutral-100 rounded-xl p-5 hover:bg-neutral-100/75 transition-all duration-300 flex flex-col items-center justify-center shadow-sm select-none"
+                className="bg-[#111111] border border-white/5 rounded-xl p-5 hover:bg-neutral-900/95 hover:border-emerald-500/20 transition-all duration-300 flex flex-col items-center justify-center shadow-md select-none group min-h-[140px]"
               >
-                <span className="text-[15px] md:text-[16px] font-extrabold tracking-tight text-neutral-800 font-mono">
+                {award.logoUrl ? (
+                  <div className={`w-9 h-9 mb-2.5 bg-white flex items-center justify-center p-1 border border-white/10 ${award.isRound ? 'rounded-full' : 'rounded-lg'} overflow-hidden shrink-0`}>
+                    <img 
+                      src={award.logoUrl} 
+                      alt={award.name} 
+                      className={`w-full h-full ${award.isRound ? 'object-cover' : 'object-contain'}`}
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                ) : null}
+                <span className="text-[14px] md:text-[15px] font-extrabold tracking-tight text-white font-mono group-hover:text-emerald-450 transition-colors text-center">
                   {award.name}
                 </span>
-                <span className="text-[10px] text-neutral-400 uppercase tracking-widest mt-1.5 font-semibold text-center leading-normal">
+                <span className="text-[10px] text-white/50 uppercase tracking-widest mt-1.5 font-semibold text-center leading-normal group-hover:text-white/70 transition-colors">
                   {award.desc}
                 </span>
               </div>
             ))}
-
+ 
           </div>
         </div>
       </section>
 
       {/* SECTION 3: TECH STACK EXPERTISE GRID */}
-      <section className="bg-neutral-900/45 py-24 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px]">
+      <section className="bg-[#000000] py-24 border-b border-white/5 relative">
+        <div className="absolute top-[10%] right-[10%] w-[400px] h-[150px] bg-emerald-500/2 blur-[100px] rounded-full pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] relative z-10">
           <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-white">
             Our <span className="text-emerald-400">advanced AI tech stack</span> expertise
           </h2>
@@ -407,8 +457,9 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </section>
 
       {/* SECTION 4: HIRE AI DEVELOPERS WHO DELIVER AI RIGHT */}
-      <section className="py-24 border-b border-white/5 bg-black/25">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="py-24 border-b border-white/5 bg-[#080808]/40 relative">
+        <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[150px] bg-emerald-500/1.5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
           
           <div className="lg:col-span-4 flex flex-col justify-start">
             <h2 className="text-[32px] md:text-[42px] lg:text-[46px] font-extrabold leading-[1.1] tracking-tight text-white mb-6">
@@ -442,8 +493,10 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </section>
 
       {/* SECTION 5: 5 STEPS TIMELINE */}
-      <section className="py-24 bg-gradient-to-r from-emerald-950/20 to-lime-950/20 border-b border-white/5 relative">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="py-24 bg-[#000000] border-b border-white/5 relative overflow-hidden">
+        {/* Subtle decorative brand green glow node */}
+        <div className="absolute top-[15%] left-[20%] w-[550px] h-[180px] bg-emerald-500/3 blur-[130px] rounded-full pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
           
           <div className="lg:col-span-5 lg:sticky lg:top-[120px] self-start py-2">
             <h2 className="text-[32px] md:text-[42px] font-extrabold leading-tight text-white mb-6">
@@ -556,9 +609,10 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </section>
 
       {/* SECTION 6: FLEXIBLE ENGAGEMENT MODELS */}
-      <section className="py-24 border-b border-white/5 bg-black/40">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px] text-center">
-          <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-white">
+      <section className="py-24 border-b border-white/5 bg-[#000000] relative">
+        <div className="absolute bottom-[5%] right-[10%] w-[400px] h-[150px] bg-emerald-500/2 blur-[100px] rounded-full pointer-events-none" />
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px] text-center relative z-10">
+          <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-white animate-fade-in">
             Flexible <span className="text-emerald-400">models for scalable</span> AI projects
           </h2>
           <p className="text-white/50 text-[14px] md:text-[15px] max-w-[650px] mx-auto mt-3 leading-relaxed mb-12">
@@ -568,11 +622,11 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Model 1: Staff Augmentation */}
-            <div className="border border-white/10 rounded-2xl overflow-hidden bg-neutral-900/30 flex flex-col justify-between">
-              <div className="bg-emerald-500/10 border-b border-white/5 py-3 text-center text-[12px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
+            <div className="border border-white/5 rounded-2xl overflow-hidden bg-[#080808] hover:border-emerald-500/10 transition-all duration-300 flex flex-col justify-between shadow-2xl">
+              <div className="bg-emerald-500/5 border-b border-white/5 py-4 text-center text-[11px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
                 Staff Augmentation
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between bg-gradient-to-b from-transparent to-black/20">
                 <div>
                   <p className="text-[12.5px] text-white/65 leading-relaxed text-left">
                     Tap into our pool of AI developers to fill immediate skill gaps. Whether it's training large datasets or integrating NLP modules, our engineers blend seamlessly with your in-house teams.
@@ -591,11 +645,11 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
             </div>
 
             {/* Model 2: Dedicated Teams */}
-            <div className="border border-white/10 rounded-2xl overflow-hidden bg-neutral-900/30 flex flex-col justify-between">
-              <div className="bg-emerald-500/15 border-b border-white/5 py-3 text-center text-[12px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
+            <div className="border border-white/5 rounded-2xl overflow-hidden bg-[#080808] hover:border-emerald-500/10 transition-all duration-300 flex flex-col justify-between shadow-2xl">
+              <div className="bg-emerald-500/10 border-b border-white/5 py-4 text-center text-[11px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
                 Dedicated Teams
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between bg-gradient-to-b from-transparent to-black/20">
                 <div>
                   <p className="text-[12.5px] text-white/65 leading-relaxed text-left">
                     Build a focused AI squad with domain-specific knowledge, from predictive analytics to generative AI. Our teams act as an extension of your company, fully aligned with your goals.
@@ -614,11 +668,11 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
             </div>
 
             {/* Model 3: Software Outsourcing */}
-            <div className="border border-white/10 rounded-2xl overflow-hidden bg-neutral-900/30 flex flex-col justify-between">
-              <div className="bg-emerald-500/10 border-b border-white/5 py-3 text-center text-[12px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
+            <div className="border border-white/5 rounded-2xl overflow-hidden bg-[#080808] hover:border-emerald-500/10 transition-all duration-300 flex flex-col justify-between shadow-2xl">
+              <div className="bg-emerald-500/5 border-b border-white/5 py-4 text-center text-[11px] font-mono font-extrabold tracking-widest text-emerald-400 uppercase">
                 Software Outsourcing
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between bg-gradient-to-b from-transparent to-black/20">
                 <div>
                   <p className="text-[12.5px] text-white/65 leading-relaxed text-left">
                     Let SpaceOn Technology handle the end-to-end AI development lifecycle. From model selection to production deployment and monitoring, we manage everything so you can focus on outcomes.
@@ -651,8 +705,8 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </section>
 
       {/* SECTION 7: MATRIX TABLE OUTPERFORM RESULTS */}
-      <section className="py-24 border-b border-white/5 bg-[#030604]">
-        <div className="max-w-7xl mx-auto px-5 md:px-[60px] lg:px-[100px]">
+      <section className="py-24 border-b border-white/5 bg-[#000000]">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] lg:px-[120px]">
           <h2 className="text-[28px] md:text-[38px] font-bold tracking-tight text-white text-center">
             Why our Artificial intelligence developers <span className="text-emerald-400">outperform</span> the rest?
           </h2>
@@ -660,10 +714,10 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
             We offer reliability and scalable AI expertise that’s hard to find in isolated freelance or in-house setups. Still, here’s an unbiased look at all the options you can consider.
           </p>
 
-          <div className="overflow-x-auto border border-white/10 rounded-2xl bg-[#070d08]/80 shadow-2xl">
+          <div className="overflow-x-auto border border-white/10 rounded-2xl bg-black/80 shadow-2xl">
             <table className="w-full text-left border-collapse min-w-[750px]">
               <thead>
-                <tr className="border-b border-white/10 bg-emerald-500/10 font-mono text-xs text-emerald-400 font-extrabold uppercase select-none">
+                <tr className="border-b border-white/10 bg-emerald-950/30 font-mono text-xs text-emerald-400 font-extrabold uppercase select-none">
                   <th className="p-4 md:p-5">Criteria</th>
                   <th className="p-4 md:p-5">SpaceOn Technology AI developers</th>
                   <th className="p-4 md:p-5">In-house teams</th>
@@ -694,9 +748,10 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
       </section>
 
       {/* SECTION 8: TRANSPARENT COST SHEET CARD */}
-      <section className="py-20 bg-neutral-900/20 border-b border-white/5 flex items-center justify-center">
-        <div className="max-w-5xl w-full mx-5 md:mx-[60px] lg:mx-[100px]">
-          <div className="bg-[#050b06]/95 border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
+      <section className="py-20 bg-[#000000] border-b border-white/5 flex items-center justify-center relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]/50 pointer-events-none" />
+        <div className="max-w-5xl w-full mx-5 md:mx-[60px] lg:mx-[100px] relative z-10">
+          <div className="bg-[#080808]/95 border border-white/5 rounded-2xl p-6 md:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
             
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-500/5 filter blur-[60px] rounded-full pointer-events-none" />
 
@@ -772,7 +827,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
               return (
                 <div 
                   key={idx} 
-                  className="bg-[#050b06]/90 border border-white/5 rounded-2xl overflow-hidden"
+                  className="bg-[#111111]/90 border border-white/5 rounded-2xl overflow-hidden"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}

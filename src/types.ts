@@ -54,5 +54,6 @@ export interface BlogPostItem {
   };
   image: string;
   readTime: string;
+  slug?: string;
 }
 

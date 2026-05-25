@@ -57,20 +57,20 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="relative w-full py-28 bg-[#fcfdfd] dark:bg-[#080808] overflow-hidden border-y border-neutral-200/50 dark:border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="process">
-      {/* Visual background lights (soft radiant glow for light theme) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-neutral-200/20 dark:bg-neutral-800/10 blur-[150px] rounded-full pointer-events-none" />
+    <section className="relative w-full py-28 bg-[#000000] overflow-hidden border-y border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="process">
+      {/* Visual background lights (soft radiant glow for dark theme) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#22C55E]/3 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         {/* Section Heading */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 block mb-3 font-bold">
+          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-400 block mb-3 font-bold">
             Operational Engineering Flowchart / Section 03
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             Our Development Process
           </h2>
-          <p className="text-[15px] text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+          <p className="text-[15px] text-neutral-400 leading-relaxed font-medium">
             A highly systemic, predictable engineering pipeline built to yield premium software. Click any milestone step to reveal structural details.
           </p>
         </div>
@@ -112,25 +112,25 @@ export default function ProcessSection() {
                   }}
                   className={`relative p-5 rounded-2xl text-left cursor-pointer transition-all duration-300 flex items-center gap-5 ${
                     isActive
-                      ? 'bg-neutral-950 dark:bg-neutral-900 text-white shadow-[0_15px_30px_rgba(0,0,0,0.12)]'
-                      : 'bg-white dark:bg-neutral-900/40 text-neutral-800 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-950 shadow-[0_6px_20px_rgba(0,0,0,0.015),0_1px_3px_rgba(0,0,0,0.01)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.25)] border border-transparent dark:border-white/[0.02]'
+                      ? 'bg-neutral-900 border border-white/10 text-white shadow-[0_15px_30px_rgba(0,0,0,0.4)]'
+                      : 'bg-neutral-900/40 text-neutral-400 hover:bg-neutral-900/85 hover:text-white border border-white/[0.02]'
                   }`}
                 >
                   {/* Left indicator active node bar */}
                   <div className={`absolute left-0 top-0 bottom-0 w-[4px] rounded-l-2xl transition-all duration-300 ${
-                    isActive ? 'bg-neutral-400 dark:bg-neutral-500' : 'bg-transparent'
+                    isActive ? 'bg-emerald-500' : 'bg-transparent'
                   }`} />
 
                   {/* Big Number */}
                   <div className={`font-mono text-2xl font-extrabold tracking-tighter ${
-                    isActive ? 'text-white/30' : 'text-neutral-300 dark:text-neutral-700'
+                    isActive ? 'text-emerald-500/30' : 'text-neutral-700'
                   }`}>
                     {step.number}
                   </div>
 
                   {/* Small icon outline */}
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
-                    isActive ? 'bg-white text-neutral-950' : 'bg-neutral-100/80 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
+                    isActive ? 'bg-emerald-500 text-black' : 'bg-neutral-800 text-neutral-400'
                   }`}>
                     <IconComp className="w-4 h-4" />
                   </div>
@@ -138,19 +138,19 @@ export default function ProcessSection() {
                   {/* Summary */}
                   <div className="flex-1">
                     <h3 className={`text-[16px] font-bold tracking-tight ${
-                      isActive ? 'text-white' : 'text-neutral-900 dark:text-white'
+                      isActive ? 'text-white' : 'text-neutral-300 group-hover:text-white'
                     }`}>
                       {step.title}
                     </h3>
                     <p className={`text-[13px] line-clamp-1 mt-0.5 ${
-                      isActive ? 'text-white/70' : 'text-neutral-500 dark:text-neutral-400 font-medium'
+                      isActive ? 'text-white/70' : 'text-neutral-500'
                     }`}>
                       {step.desc}
                     </p>
                   </div>
 
                   <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${
-                    isActive ? 'text-white translate-x-1' : 'text-neutral-300 dark:text-neutral-600'
+                    isActive ? 'text-emerald-400 translate-x-1' : 'text-neutral-600'
                   }`} />
                 </motion.div>
               );
@@ -159,13 +159,13 @@ export default function ProcessSection() {
 
           {/* High-Fidelity Details Screen Panel */}
           <div className="col-span-1 lg:col-span-6 lg:sticky lg:top-32" id="process-details-viewer">
-            <div className="relative bg-white dark:bg-neutral-900/80 rounded-[32px] p-8 md:p-10 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.035),0_1px_3px_rgba(0,0,0,0.01)] dark:shadow-[0_30px_70px_rgba(0,0,0,0.4)] border border-transparent dark:border-white/[0.04] min-h-[460px] flex flex-col justify-between">
+            <div className="relative bg-[#0b0b0b] rounded-[32px] p-8 md:p-10 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.5)] border border-white/[0.05] min-h-[460px] flex flex-col justify-between">
               
               {/* Border glass glow ref */}
-              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-neutral-100 dark:via-neutral-800/60 to-transparent blur-[0.5px]" />
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/10 to-transparent blur-[0.5px]" />
 
               {/* Minimal subgrid overlay for high density rendering quality */}
-              <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -177,42 +177,42 @@ export default function ProcessSection() {
                   className="space-y-6 relative z-10"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono tracking-[0.2em] text-neutral-500 dark:text-neutral-400 font-bold uppercase">
+                    <span className="text-[10px] font-mono tracking-[0.2em] text-neutral-400 font-bold uppercase">
                       TELEMETRY NODE PROFILE / {steps[activeStep].number}
                     </span>
-                    <span className="px-2.5 py-1 text-[10px] bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/30 text-emerald-700 dark:text-emerald-400 font-mono font-bold rounded-full uppercase flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-450 animate-pulse" />
+                    <span className="px-2.5 py-1 text-[10px] bg-emerald-950/20 border border-emerald-800/30 text-emerald-400 font-mono font-bold rounded-full uppercase flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       ACTIVE SYSTEM PHASE
                     </span>
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-3xl font-bold text-neutral-900 dark:text-white tracking-tight font-sans">
+                    <h3 className="text-3xl font-bold text-white tracking-tight font-sans">
                       {steps[activeStep].title}
                     </h3>
-                    <p className="text-[15px] text-neutral-700 dark:text-neutral-300 leading-relaxed italic border-l-2 border-neutral-300 dark:border-neutral-800 pl-4 font-medium">
+                    <p className="text-[15px] text-neutral-300 leading-relaxed italic border-l-2 border-neutral-800 pl-4 font-medium">
                       "{steps[activeStep].desc}"
                     </p>
                   </div>
 
                   <div className="space-y-1">
-                    <span className="text-[10px] font-mono tracking-widest text-neutral-500 dark:text-neutral-400 font-bold block uppercase">
+                    <span className="text-[10px] font-mono tracking-widest text-neutral-400 font-bold block uppercase">
                       Operational Mechanism Details
                     </span>
-                    <p className="text-[14px] text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans font-medium">
+                    <p className="text-[14px] text-neutral-300 leading-relaxed font-sans font-medium">
                       {steps[activeStep].details}
                     </p>
                   </div>
 
-                  <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800 space-y-3">
-                    <span className="text-[10px] font-mono tracking-widest text-neutral-400 dark:text-neutral-500 font-bold block uppercase">
+                  <div className="pt-6 border-t border-white/5 space-y-3">
+                    <span className="text-[10px] font-mono tracking-widest text-neutral-500 font-bold block uppercase">
                       PRIMARY STAGE OBJECTIVE
                     </span>
-                    <div className="flex items-center gap-3 bg-neutral-50 dark:bg-neutral-950/50 border border-neutral-200/60 dark:border-neutral-800/40 rounded-xl p-3.5">
-                      <div className="w-5 h-5 rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 flex items-center justify-center font-bold text-xs select-none">
+                    <div className="flex items-center gap-3 bg-neutral-950/50 border border-white/5 rounded-xl p-3.5">
+                      <div className="w-5 h-5 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold text-xs select-none">
                         ✓
                       </div>
-                      <span className="text-[13px] text-neutral-900 dark:text-neutral-100 font-bold">
+                      <span className="text-[13px] text-white font-bold">
                         {steps[activeStep].objective}
                       </span>
                     </div>
@@ -222,13 +222,13 @@ export default function ProcessSection() {
 
               {/* Decorative progress tracker along bottom */}
               <div className="relative pt-6 z-10">
-                <div className="flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400 font-bold mb-2">
+                <div className="flex justify-between text-[11px] font-mono text-neutral-400 font-bold mb-2">
                   <span>PIPELINE PROGRESS</span>
                   <span>{Math.round(((activeStep + 1) / steps.length) * 100)}% COMPLETE</span>
                 </div>
-                <div className="h-1 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
+                <div className="h-1 bg-neutral-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-neutral-900 dark:bg-white transition-all duration-500"
+                    className="h-full bg-emerald-500 transition-all duration-500"
                     style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
                   />
                 </div>

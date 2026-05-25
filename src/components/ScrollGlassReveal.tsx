@@ -24,11 +24,13 @@ export default function ScrollGlassReveal({
         initial={{ 
           opacity: 0, 
           scale: 0.98,
-          y: 15 
+          filter: "blur(12px)",
+          y: 20 
         }}
         whileInView={{ 
           opacity: 1, 
           scale: 1,
+          filter: "blur(0px)",
           y: 0 
         }}
         viewport={{ once: true, margin: `${threshold}px` }}

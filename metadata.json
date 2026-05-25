@@ -1,6 +1,6 @@
 {
-  "name": "Enterprise Developer Hero Landing",
-  "description": "A cinematic, responsive web application presenting a luxury high-end enterprise software development landing page with animated backgrounds, interactive modals, and premium aesthetic design.",
+  "name": "SpaceOn Technology",
+  "description": "Enterprise software engineering, high-scale digital platforms, cloud architecture, and custom infrastructure systems by SPACEON.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -8,10 +8,10 @@ interface CTABannerProps {
 
 export default function CTABanner({ onScheduleCall }: CTABannerProps) {
   return (
-    <section className="relative w-full py-28 bg-[#f4f5f7] overflow-hidden border-y border-neutral-200/50 px-5 md:px-[60px] lg:px-[120px]" id="cta-banner">
-      {/* Absolute soft radiant glows suitable for light section backdrops */}
-      <div className="absolute top-[10%] left-[20%] w-[500px] h-[150px] bg-neutral-200/60 blur-[110px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[200px] bg-neutral-200/50 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative w-full py-28 bg-[#000000] overflow-hidden border-y border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="cta-banner">
+      {/* Absolute soft radiant glows suitable for dark section backdrops */}
+      <div className="absolute top-[10%] left-[20%] w-[500px] h-[150px] bg-[#22C55E]/3 blur-[110px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[200px] bg-[#22C55E]/3 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl mx-auto z-10 relative">
         <div className="relative bg-gradient-to-b from-[#141414] to-[#040404] border border-neutral-900/80 rounded-[36px] p-8 md:p-16 text-center shadow-[0_30px_70px_rgba(0,0,0,0.18)] overflow-hidden flex flex-col items-center">
@@ -48,12 +48,9 @@ export default function CTABanner({ onScheduleCall }: CTABannerProps) {
               className="relative scale-100 hover:scale-[1.03] active:scale-95 transition-all duration-300 group focus:outline-none cursor-pointer"
               id="cta-schedule-call-btn"
             >
-              {/* Layered White Pill */}
-              <div className="rounded-full bg-white text-black p-[1px] overflow-hidden">
-                {/* Glow reflections on button */}
-                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-black/30 to-transparent pointer-events-none" />
-                
-                <div className="rounded-full bg-white hover:bg-neutral-100 transition-colors px-[36px] py-[13px] flex items-center gap-2.5">
+              {/* Layered Emerald Pill */}
+              <div className="rounded-full bg-emerald-500 text-black p-[1px] overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.25)] hover:shadow-[0_0_40px_rgba(16,185,129,0.35)]">
+                <div className="rounded-full bg-emerald-500 hover:bg-emerald-400 transition-colors px-[36px] py-[13px] flex items-center gap-2.5">
                   <Calendar className="w-4.5 h-4.5 text-black" />
                   <span className="text-black text-[14px] font-bold tracking-wide">
                     Schedule a Consultation Call

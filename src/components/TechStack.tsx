@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function TechStack() {
+interface TechStackProps {
+  onViewTechDetail?: (techId: string) => void;
+}
+
+export default function TechStack({ onViewTechDetail }: TechStackProps) {
   const [activeCategory, setActiveCategory] = useState<'All' | 'Frontend' | 'Backend' | 'Infrastructure'>('All');
 
   const categories = ['All', 'Frontend', 'Backend', 'Infrastructure'] as const;
@@ -191,20 +195,51 @@ export default function TechStack() {
         {/* Technologies Grid Container */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" id="technologies-grid">
           <AnimatePresence mode="popLayout">
-            {filteredData.map((tech) => (
-              <motion.div
-                key={tech.name}
-                layout
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className={`relative bg-white/[0.02] border border-white/10 ${tech.borderColor} rounded-2xl p-6 backdrop-blur-md hover:bg-white/[0.04] transition-all group flex flex-col items-center justify-center h-[140px] cursor-pointer shadow-lg hover:${tech.shadowColor}`}
-                style={{ 
-                  '--glow-color': tech.color 
-                } as React.CSSProperties}
-              >
+            {filteredData.map((tech) => {
+              const handleCardClick = () => {
+                if (!onViewTechDetail) return;
+                
+                // Map tech card name to our new structured individual technology page IDs
+                const mapping: Record<string, string> = {
+                  'React': 'tech-react',
+                  'Next.js': 'tech-react',
+                  'TypeScript': 'tech-react',
+                  'Tailwind CSS': 'tech-react',
+                  'Node.js': 'tech-node-js',
+                  'Laravel': 'tech-laravel',
+                  'Python': 'tech-python',
+                  'PostgreSQL': 'tech-python',
+                  'MongoDB': 'tech-mern-stack',
+                  'Docker': 'tech-python',
+                  'Flutter Mobile': 'tech-flutter',
+                  'React Native': 'tech-react-native',
+                  'Java': 'tech-java',
+                  'PHP': 'tech-php',
+                  'WordPress': 'tech-laravel',
+                  'Moodle': 'tech-laravel',
+                };
+                
+                const mappedId = mapping[tech.name];
+                if (mappedId) {
+                  onViewTechDetail(mappedId);
+                }
+              };
+
+              return (
+                <motion.div
+                  key={tech.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  onClick={handleCardClick}
+                  className={`relative bg-white/[0.02] border border-white/10 ${tech.borderColor} rounded-2xl p-6 backdrop-blur-md hover:bg-white/[0.04] transition-all group flex flex-col items-center justify-center h-[140px] cursor-pointer shadow-lg hover:${tech.shadowColor}`}
+                  style={{ 
+                    '--glow-color': tech.color 
+                  } as React.CSSProperties}
+                >
                 {/* Custom inner ambient light on hover */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
@@ -236,7 +271,7 @@ export default function TechStack() {
                   {tech.category}
                 </span>
               </motion.div>
-            ))}
+            )})}
           </AnimatePresence>
         </div>
       </div>

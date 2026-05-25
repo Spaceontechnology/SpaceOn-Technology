@@ -66,29 +66,29 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative w-full py-28 bg-[#f8f9fa] dark:bg-[#080808]/90 overflow-hidden border-y border-neutral-200/60 dark:border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="stats">
-      {/* Decorative center orb spotlight (soft neutral radiant glow for light theme) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[250px] bg-neutral-200/30 dark:bg-neutral-800/10 blur-[130px] rounded-full pointer-events-none" />
+    <section className="relative w-full py-28 bg-[#000000] overflow-hidden border-y border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="stats">
+      {/* Decorative center orb spotlight (soft green radiant glow) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[250px] bg-emerald-500/3 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
-        {/* Core metrics panel - Pristine White with realistic shadows */}
-        <div className="bg-white dark:bg-neutral-900/85 rounded-[32px] p-8 md:p-12 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.045),0_1px_3px_rgba(0,0,0,0.015)] dark:shadow-[0_30px_70px_rgba(0,0,0,0.4)] border border-transparent dark:border-white/[0.04] relative">
+        {/* Core metrics panel - Sleek Dark with subtle borders */}
+        <div className="bg-[#080808] rounded-[32px] p-8 md:p-12 overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.5)] border border-white/[0.05] relative">
           
-          {/* Subtle elegant grid pattern background tailored for lighting */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+          {/* Subtle elegant grid pattern background */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
 
           {/* Top aesthetic border line reflection */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent blur-[0.5px]" />
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/10 to-transparent blur-[0.5px]" />
 
           {/* Header elements inside panel */}
           <div className="max-w-md mb-12 relative z-10">
-            <span className="text-[10.5px] font-mono tracking-[0.2em] text-neutral-600 dark:text-neutral-400 uppercase block mb-2 font-bold">
+            <span className="text-[10.5px] font-mono tracking-[0.2em] text-neutral-400 uppercase block mb-2 font-bold">
               QUANTITATIVE TELEMETRY METRICS / 05
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight font-sans">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-sans">
               Production Scalability Status
             </h3>
-            <p className="text-neutral-700 dark:text-neutral-300 text-[13.5px] mt-2 leading-relaxed font-medium">
+            <p className="text-neutral-400 text-[13.5px] mt-2 leading-relaxed font-medium">
               Real-time audit records demonstrating outstanding code volume and elite reliability achievements globally.
             </p>
           </div>
@@ -123,30 +123,30 @@ export default function StatsSection() {
                     ease: [0.16, 1, 0.3, 1] 
                   }}
                   className={`space-y-4 ${
-                    idx < 3 ? 'lg:border-r lg:border-neutral-100 dark:lg:border-neutral-800 lg:pr-6' : ''
+                    idx < 3 ? 'lg:border-r lg:border-white/5 lg:pr-6' : ''
                   }`}
                   id={stat.id}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-neutral-50 dark:bg-neutral-800 border border-neutral-200/60 dark:border-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-300">
+                    <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center text-neutral-300">
                       <IconComp className="w-4 h-4" />
                     </div>
-                    <span className="text-[10px] font-mono tracking-widest text-neutral-600 dark:text-neutral-400 uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase font-bold">
                       Metric Unit / A-{idx + 1}
                     </span>
                   </div>
 
                   <div className="space-y-1">
                     {/* Big Numbers typography */}
-                    <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white font-mono flex items-baseline select-none">
-                      <span>{stat.value}</span>
+                    <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white font-mono flex items-baseline select-none">
+                      <span className="text-emerald-500">{stat.value}</span>
                     </div>
-                    <h4 className="text-[15px] font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+                    <h4 className="text-[15px] font-bold text-neutral-100 tracking-tight">
                       {stat.label}
                     </h4>
                   </div>
 
-                  <p className="text-[12.5px] text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                  <p className="text-[12.5px] text-neutral-400 font-medium leading-relaxed">
                     {stat.description}
                   </p>
                 </motion.div>
@@ -155,9 +155,9 @@ export default function StatsSection() {
           </div>
 
           {/* Footnotes label representing server diagnostics */}
-          <div className="mt-12 pt-6 border-t border-neutral-100 dark:border-neutral-800 flex flex-col sm:flex-row justify-between items-center text-[10px] text-neutral-600 dark:text-neutral-400 font-mono font-bold gap-4 relative z-10">
+          <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-neutral-400 font-mono font-bold gap-4 relative z-10">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-450 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               REAL-TIME MULTI-ZONE INTEGRITY STATUS: 100% ONLINE
             </span>
             <span>SPACEON ANALYTICS CORE LOAD OK</span>

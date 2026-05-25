@@ -34,6 +34,40 @@
   }
 }
 
+:root {
+  color-scheme: dark !important;
+}
+
+html {
+  forced-color-adjust: none !important;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  forced-color-adjust: none !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+input,
+textarea,
+button,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light) {
+  html,
+  body {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    color-scheme: dark !important;
+  }
+}
+
 @layer base {
   body {
     background-color: #000000;
@@ -69,4 +103,51 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Hero illustration glow mobile/tablet scaling fixes */
+.hero-glow {
+  transform: translate(-50%, -50%) scale(1);
+  will-change: transform, opacity;
+}
+
+@keyframes heroGlowPulse1 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 0.95;
+  }
+}
+
+@keyframes heroGlowPulse2 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+.hero-glow-pulse-1 {
+  animation: heroGlowPulse1 5s ease-in-out infinite;
+}
+
+.hero-glow-pulse-2 {
+  animation: heroGlowPulse2 6s ease-in-out infinite;
+}
+
+@media (max-width: 1023px) {
+  .hero-glow,
+  .hero-glow-pulse-1,
+  .hero-glow-pulse-2 {
+    animation: none !important;
+    transform: translate(-50%, -50%) scale(1.35) !important;
+    opacity: 0.91 !important;
+  }
+}
+
 

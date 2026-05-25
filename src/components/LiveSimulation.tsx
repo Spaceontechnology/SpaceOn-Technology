@@ -31,22 +31,22 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
   };
 
   return (
-    <section className="relative w-full py-28 bg-[#fafafa] dark:bg-[#080808] overflow-hidden border-y border-neutral-200/40 dark:border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="engine-simulation">
+    <section className="relative w-full py-28 bg-[#0a0a0a] overflow-hidden border-y border-white/5 px-5 md:px-[60px] lg:px-[120px]" id="engine-simulation">
       {/* Absolute soft light gradients to convey deep drop shadows */}
-      <div className="absolute top-[10%] left-[15%] w-[600px] h-[300px] bg-neutral-200/50 dark:bg-neutral-800/5 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[300px] bg-neutral-100/60 dark:bg-neutral-900/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-[10%] left-[15%] w-[600px] h-[300px] bg-emerald-500/3 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[300px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
         
         {/* Section Heading with Contrast Highlights */}
         <div className="max-w-3xl mb-16">
-          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-400 block mb-3 font-bold">
+          <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-400 block mb-3 font-bold">
             Interactive Engine Simulation / Section 05
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-4 font-sans leading-tight">
-            Our Orchestration Engine <span className="text-neutral-500 dark:text-neutral-400 font-medium font-sans">In Real-Time</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 font-sans leading-tight">
+            Our Orchestration Engine <span className="text-neutral-400 font-medium font-sans">In Real-Time</span>
           </h2>
-          <p className="text-[15px] sm:text-[16px] text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+          <p className="text-[15px] sm:text-[16px] text-neutral-400 leading-relaxed font-medium">
             Inspect the live spatial mapping and automated layout pipeline compiling backend nodes safely. Interact with the feed speeds below to simulate workloads first-hand.
           </p>
         </div>

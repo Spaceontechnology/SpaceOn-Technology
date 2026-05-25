@@ -22,7 +22,8 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'
       },
       image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800',
-      readTime: '6 min read'
+      readTime: '6 min read',
+      slug: 'blog/future-of-saas-platforms'
     },
     {
       id: 'blog-2',
@@ -35,7 +36,8 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150'
       },
       image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=800',
-      readTime: '9 min read'
+      readTime: '9 min read',
+      slug: 'blog/cloud-native-application-development'
     },
     {
       id: 'blog-3',
@@ -48,7 +50,8 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
         avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150'
       },
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
-      readTime: '5 min read'
+      readTime: '5 min read',
+      slug: 'blog/ai-development-services-guide'
     }
   ];
 
