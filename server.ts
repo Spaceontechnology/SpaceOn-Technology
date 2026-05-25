@@ -13,40 +13,43 @@ const PORT = 3000;
 // Body parser parsing
 app.use(express.json());
 
-// Get SMTP credentials from environment or use user's explicit secure defaults
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.spaceon.in';
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465');
-const SMTP_USER = process.env.SMTP_USER || 'enquiry@spaceon.in';
-const SMTP_PASS = process.env.SMTP_PASS || 'Arsh@2410';
+const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465', 10);
+const SMTP_USER = process.env.SMTP_USER || '';
+const SMTP_PASS = process.env.SMTP_PASS || '';
 const ADMIN_EMAIL = process.env.SMTP_ADMIN_EMAIL || 'info@spaceon.in';
 
-// Setup secure SMTP transporter
-const transporter = nodemailer.createTransport({
-  host: SMTP_HOST,
-  port: SMTP_PORT,
-  secure: SMTP_PORT === 465, // Uses SSL for 465
-  auth: {
-    user: SMTP_USER,
-    pass: SMTP_PASS,
-  },
-  tls: {
-    // Robust parsing for custom subdomains/certificates
-    rejectUnauthorized: false
-  }
-});
+const smtpEnabled = Boolean(SMTP_USER && SMTP_PASS);
+const transporter = smtpEnabled
+  ? nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    })
+  : null;
 
-// Verify SMTP connection on load to ensure active delivery channels
-transporter.verify((error) => {
-  if (error) {
-    console.error('SMTP Connection pipeline verification failed:', error);
-  } else {
-    console.log('SMTP Delivery pipe successfully verified and active.');
-  }
-});
+if (transporter) {
+  transporter.verify((error) => {
+    if (error) {
+      console.error('SMTP Connection pipeline verification failed:', error);
+    } else {
+      console.log('SMTP Delivery pipe successfully verified and active.');
+    }
+  });
+} else {
+  console.warn('SMTP email delivery is disabled because SMTP_USER or SMTP_PASS is not configured.');
+}
 
 // API routes
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', smtp: 'active' });
+  res.json({ status: 'ok', smtp: smtpEnabled ? 'active' : 'disabled' });
 });
 
 // Handle Project Enquiry Submission
@@ -206,6 +209,13 @@ app.post('/api/send-enquiry', async (req, res) => {
       </body>
       </html>
     `;
+
+    if (!transporter) {
+      return res.status(503).json({
+        success: false,
+        error: 'SMTP delivery is not configured. Please set SMTP_USER and SMTP_PASS in your environment variables.',
+      });
+    }
 
     // Dispatch Admin Notification Envelope
     const adminMailPromise = transporter.sendMail({
