@@ -1000,15 +1000,44 @@ export function ContactPage({ onBack, onBookConsultation }: InternalPageProps) {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '', topic: 'Custom Platform Dev' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('/api/send-enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phoneCode: '',
+          phoneNumber: '',
+          service: formData.topic || 'General Contact Inquiry',
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSuccess(true);
+        setFormData({ name: '', email: '', company: '', message: '', topic: 'Custom Platform Dev' });
+      } else {
+        setSubmitError(data.error || 'Error dispatching contact packet. Please try again.');
+      }
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      setSubmitError('Failed to establish contact with the mail server. Please check your connection.');
+    } finally {
       setLoading(false);
-      setSuccess(true);
-      setFormData({ name: '', email: '', company: '', message: '', topic: 'Custom Platform Dev' });
-    }, 1200);
+    }
   };
 
   const contactOptions = [
@@ -1125,6 +1154,16 @@ export function ContactPage({ onBack, onBookConsultation }: InternalPageProps) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {submitError && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-3.5 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-xs font-semibold flex items-start gap-2.5 leading-relaxed"
+                    >
+                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                      <span>{submitError}</span>
+                    </motion.div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <label className="text-[10px] font-mono text-white/40 uppercase font-bold block">Your Human Label</label>
@@ -1810,7 +1849,7 @@ export function TechnologiesPage({
 }: InternalPageProps & { onViewTechDetail?: (techId: string) => void }) {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
-  const categories = ['ALL', 'FRONTEND', 'BACKEND', 'DATABASES', 'AI TOOLS', 'DEVOPS'];
+  const categories = ['ALL', 'FRONTEND', 'BACKEND', 'DATABASES', 'AI TOOLS', 'DEVOPS', 'AWS HOSTING'];
 
   const techStack = [
     { id: 'tech-react', name: 'React 19 & Next.js', category: 'FRONTEND', icon: Code, rating: '99% STABLE', desc: 'Sovereign SSR routes with pre-fetching CDN caches.' },
@@ -1821,7 +1860,8 @@ export function TechnologiesPage({
     { id: 'tech-python', name: 'Pinecone Vector DB', category: 'DATABASES', icon: Server, rating: 'COSINE SIM', desc: 'Index metrics holding context-rich vector embeddings.' },
     { id: 'tech-python', name: 'Gemini SDKs', category: 'AI TOOLS', icon: Bot, rating: 'PROMPT STREAM', desc: 'Automated task loops with contextual prompt routing.' },
     { id: 'tech-python', name: 'Docker Containers', category: 'DEVOPS', icon: Terminal, rating: 'ISOLATED OS', desc: 'Standardized build containment holding code files securely.' },
-    { id: 'tech-splunk', name: 'Kubernetes Orch', category: 'DEVOPS', icon: Globe, rating: 'AUTOSCALE', desc: 'Multi-node server groups adapting load limits dynamically.' }
+    { id: 'tech-splunk', name: 'Kubernetes Orch', category: 'DEVOPS', icon: Globe, rating: 'AUTOSCALE', desc: 'Multi-node server groups adapting load limits dynamically.' },
+    { id: 'tech-aws', name: 'AWS Cloud Hosting', category: 'AWS HOSTING', icon: Server, rating: '100% AWS', desc: 'Secure cloud VPC cluster nodes, autoscaling server groups, and zero-overhead AWS Lambda serverless hosting.' }
   ];
 
   const filteredTech = selectedCategory === 'ALL'

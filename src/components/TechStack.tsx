@@ -6,9 +6,9 @@ interface TechStackProps {
 }
 
 export default function TechStack({ onViewTechDetail }: TechStackProps) {
-  const [activeCategory, setActiveCategory] = useState<'All' | 'Frontend' | 'Backend' | 'Infrastructure'>('All');
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Frontend' | 'Backend' | 'AWS Hosting'>('All');
 
-  const categories = ['All', 'Frontend', 'Backend', 'Infrastructure'] as const;
+  const categories = ['All', 'Frontend', 'Backend', 'AWS Hosting'] as const;
 
   const techData = [
     { 
@@ -85,7 +85,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
     },
     { 
       name: 'AWS Cloud', 
-      category: 'Infrastructure', 
+      category: 'AWS Hosting', 
       color: 'rgba(255,153,0,0.15)', 
       borderColor: 'group-hover:border-[#FF9900]/40',
       shadowColor: 'shadow-[#FF9900]/10',
@@ -93,7 +93,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
     },
     { 
       name: 'Docker', 
-      category: 'Infrastructure', 
+      category: 'AWS Hosting', 
       color: 'rgba(36,150,237,0.15)', 
       borderColor: 'group-hover:border-[#2496ED]/40',
       shadowColor: 'shadow-[#2496ED]/10',

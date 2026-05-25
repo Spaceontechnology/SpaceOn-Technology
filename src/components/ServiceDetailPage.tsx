@@ -176,10 +176,10 @@ const techLogosMap: Record<string, { logoUrl: string; color: string; bgGlow: str
     color: '#2088FF',
     bgGlow: 'rgba(32,136,255,0.06)'
   },
-  'GCP / AWS Cloud': { 
-    logoUrl: 'https://cdn.simpleicons.org/googlecloud/4285F4', 
-    color: '#4285F4',
-    bgGlow: 'rgba(66,133,244,0.06)'
+  'AWS Hosting': { 
+    logoUrl: 'https://cdn.simpleicons.org/amazonwebservices/FF9900', 
+    color: '#FF9900',
+    bgGlow: 'rgba(255,153,0,0.06)'
   },
   'Prometheus & Grafana': { 
     logoUrl: 'https://cdn.simpleicons.org/prometheus/E6522C', 
@@ -480,13 +480,13 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
         'Kubernetes Container Deployment: Controls clean rolling updates with no server service downtime.',
         'Continuous Health Inspections: Gathers deep log data and triggers automations if container resources spike.'
       ],
-      deepTechOverview: 'Ensures optimal loading. We configure smart limits, preventing memory spike issues while maintaining minimal deployment costs across Google Cloud and Amazon Web Services.',
+      deepTechOverview: 'Ensures optimal loading. We configure smart limits, preventing memory spike issues while maintaining minimal deployment costs across Amazon Web Services (AWS) Cloud.',
       keyDeliverables: [
-        { name: 'Infrastructure as Code (IaC) Files', desc: 'Comprehensive, structured Terraform scripts that can easily reproduce your entire setup in seconds.', detail: 'Terraform AWS / GCP files' },
+        { name: 'Infrastructure as Code (IaC) Files', desc: 'Comprehensive, structured Terraform scripts that can easily reproduce your entire setup in seconds.', detail: 'Terraform AWS files' },
         { name: 'Seamless CI/CD Pipelines', desc: 'Fully automated workflows that verify, secure, test, and release code changes instantly on git commit.', detail: 'GitHub Actions config files' },
         { name: 'Deep Performance Dashboards', desc: 'Detailed Prometheus and Grafana tracking systems displaying active hardware traffic nodes.', detail: 'Prometheus & eBPF Telemetry setup' }
       ],
-      techStack: ['Terraform', 'Kubernetes (K8s)', 'Docker Engine', 'GitHub Actions', 'GCP / AWS Cloud', 'Prometheus & Grafana'],
+      techStack: ['Terraform', 'Kubernetes (K8s)', 'Docker Engine', 'GitHub Actions', 'AWS Hosting', 'Prometheus & Grafana'],
       costEstimatorLabels: {
         scaleName: 'Target Service Cluster Scope',
         scaleDesc: ['Single instance (Simple web serving Docker node)', 'Multi-instance scalable cluster (API + Worker Nodes)', 'Multi-environment setup (Dev, Staging, Master clusters)', 'High-availability global setups across multiple regions', 'Global edge networks with geo-routing policies'],

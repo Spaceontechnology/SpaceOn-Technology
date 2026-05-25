@@ -35,6 +35,7 @@ import BlogSection from './components/BlogSection';
 import CTABanner from './components/CTABanner';
 import Footer from './components/Footer';
 import ScrollGlassReveal from './components/ScrollGlassReveal';
+import ScrollToTop from './components/ScrollToTop';
 
 interface LogMessage {
   id: string;
@@ -607,6 +608,9 @@ export default function App() {
       
       {/* Cinematic animated fluid space Background */}
       <BackgroundElements />
+
+      {/* Global Scroll To Top reset on view transitions */}
+      <ScrollToTop selectedServiceId={selectedServiceId} />
 
       {/* Main Container Layout */}
       <div className="relative z-20 min-h-screen flex flex-col justify-between">

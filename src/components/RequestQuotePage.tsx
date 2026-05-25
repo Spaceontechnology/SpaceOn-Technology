@@ -71,15 +71,41 @@ export default function RequestQuotePage({ onBack, initialService = '' }: Reques
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrors({});
+
+    try {
+      const response = await fetch('/api/send-enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitSuccess(true);
+      } else {
+        setErrors(prev => ({ 
+          ...prev, 
+          submit: data.error || 'Server rejected the enquiry. Please try again.' 
+        }));
+      }
+    } catch (err) {
+      console.error('Error submitting enquiry form:', err);
+      setErrors(prev => ({ 
+        ...prev, 
+        submit: 'Failed to reach SMTP gateway. Please check your network or try again.' 
+      }));
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 1500);
+    }
   };
 
   const checkmarks = [
@@ -194,6 +220,17 @@ export default function RequestQuotePage({ onBack, initialService = '' }: Reques
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   
+                  {errors.submit && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-semibold flex items-start gap-2.5 leading-relaxed"
+                    >
+                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                      <span>{errors.submit}</span>
+                    </motion.div>
+                  )}
+
                   {/* Your Name */}
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-neutral-700 block uppercase tracking-wide">

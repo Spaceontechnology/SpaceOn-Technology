@@ -22,6 +22,7 @@ export default function ConsultationModal({ isOpen, onClose, initialService = 'A
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submissionCode, setSubmissionCode] = useState('');
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const services = [
     'Custom Software Development',
@@ -40,18 +41,46 @@ export default function ConsultationModal({ isOpen, onClose, initialService = 'A
     '$500,000+ USD'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
-    // Simulate real high-fidelity enterprise ingestion pipeline
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const fullMessage = `Budget Constraints: ${formData.budget}\n\nTechnical Specifications:\n${formData.description || 'No description provided.'}`;
+      const response = await fetch('/api/send-enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phoneCode: '',
+          phoneNumber: '',
+          service: formData.service || 'Brief Consultation Request',
+          message: fullMessage,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitSuccess(true);
+        const uuid = 'SO-' + Math.floor(100000 + Math.random() * 900000);
+        setSubmissionCode(uuid);
+      } else {
+        setSubmitError(data.error || 'Server rejected the briefing packet. Please try again.');
+      }
+    } catch (err) {
+      console.error('Inbound brief delivery failed:', err);
+      setSubmitError('Failed to establish contact with the mail server. Please check your connection.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-      const uuid = 'SO-' + Math.floor(100000 + Math.random() * 900000);
-      setSubmissionCode(uuid);
-    }, 1800);
+    }
   };
 
   const resetForm = () => {
@@ -113,6 +142,16 @@ export default function ConsultationModal({ isOpen, onClose, initialService = 'A
             <div className="p-6 max-h-[75vh] overflow-y-auto">
               {!submitSuccess ? (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {submitError && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-3.5 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-xs font-semibold flex items-start gap-2.5 leading-relaxed"
+                    >
+                      <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5 text-red-400" />
+                      <span>{submitError}</span>
+                    </motion.div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-medium text-white/60 mb-2 tracking-wider uppercase font-mono">

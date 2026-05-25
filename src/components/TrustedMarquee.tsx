@@ -3,9 +3,9 @@ import React from 'react';
 export default function TrustedMarquee() {
   const companies = [
     { 
-      name: 'Google Cloud', 
-      logoUrl: 'https://cdn.simpleicons.org/googlecloud/4285F4', 
-      color: '#4285F4' 
+      name: 'Terraform Cloud', 
+      logoUrl: 'https://cdn.simpleicons.org/terraform/844FBA', 
+      color: '#844FBA' 
     },
     { 
       name: 'Microsoft', 
