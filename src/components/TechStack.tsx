@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import TechLogo from './TechLogo';
 
 interface TechStackProps {
   onViewTechDetail?: (techId: string) => void;
@@ -253,8 +252,13 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent blur-[0.2px]" />
 
                 {/* Centered beautiful logo */}
-                <div className="mb-3 relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
-                  <TechLogo name={tech.name} className="w-8 h-8 shrink-0 transition-transform duration-500 group-hover:scale-110" />
+                <div className="mb-3 relative z-10 flex items-center justify-center w-12 h-12">
+                  <img 
+                    src={tech.logoUrl} 
+                    alt={`${tech.name} logo`}
+                    className="w-10 h-10 object-contain transition-transform duration-500 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
 
                 {/* Minimal Technology Name */}

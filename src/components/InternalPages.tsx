@@ -7,7 +7,51 @@ import {
   Database, Terminal, Sparkles, AlertCircle, RefreshCw, BarChart2, Star
 } from 'lucide-react';
 
-import TechLogo from './TechLogo';
+function TechLogo({ name, className = "w-4 h-4" }: { name: string; className?: string }) {
+  const [loadError, setLoadError] = useState(false);
+  const n = name.toLowerCase();
+
+  // Map names to Simple Icons slug and brand color
+  let slug = '';
+  let color = 'ffffff';
+  
+  if (n.includes('python')) { slug = 'python'; color = '3776AB'; }
+  else if (n.includes('tensorflow')) { slug = 'tensorflow'; color = 'FF6F00'; }
+  else if (n.includes('openai') || n.includes('gpt')) { slug = 'openai'; color = 'ffffff'; }
+  else if (n.includes('langchain')) { slug = 'langchain'; color = '10B981'; }
+  else if (n.includes('pytorch')) { slug = 'pytorch'; color = 'EE4C2C'; }
+  else if (n.includes('node')) { slug = 'nodedotjs'; color = '339933'; }
+  else if (n.includes('aws') || n.includes('amazon')) { slug = 'amazonwebservices'; color = 'FF9900'; }
+  else if (n.includes('docker')) { slug = 'docker'; color = '2496ED'; }
+  else if (n.includes('pinecone')) { slug = 'pinecone'; color = '10B981'; }
+  else if (n.includes('postgresql') || n.includes('postgres')) { slug = 'postgresql'; color = '4169E1'; }
+  else if (n.includes('laravel')) { slug = 'laravel'; color = 'FF2D20'; }
+  else if (n.includes('kubernetes')) { slug = 'kubernetes'; color = '326CE5'; }
+  else if (n.includes('gemini')) { slug = 'googlegemini'; color = '8AB4F8'; }
+  else if (n.includes('typescript')) { slug = 'typescript'; color = '3178C6'; }
+  else if (n.includes('react') || n.includes('next')) { slug = 'react'; color = '61DAFB'; }
+  else if (n.includes('database') || n.includes('vector')) { slug = 'databricks'; color = 'FF3621'; }
+
+  if (slug && !loadError) {
+    return (
+      <img 
+        src={`https://api.iconify.design/simple-icons:${slug}.svg?color=%23${color}`}
+        alt={name}
+        className={`${className} object-contain`}
+        referrerPolicy="no-referrer"
+        onError={() => setLoadError(true)}
+      />
+    );
+  }
+
+  // Fallback to simpler code icon
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+}
 
 interface InternalPageProps {
   onBack: () => void;
@@ -1999,7 +2043,7 @@ export function TechnologiesPage({
                         }
                       }}
                       transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                      className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white shrink-0"
+                      className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white"
                     >
                       <TechLogo name={tech.name} className="w-5 h-5" />
                     </motion.div>

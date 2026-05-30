@@ -8,7 +8,51 @@ import {
 } from 'lucide-react';
 import ScrollGlassReveal from './ScrollGlassReveal';
 
-import TechLogo from './TechLogo';
+function TechLogo({ name, className = "w-4 h-4" }: { name: string; className?: string }) {
+  const [loadError, setLoadError] = useState(false);
+  const n = name.toLowerCase();
+
+  // Map names to Simple Icons slug and brand color
+  let slug = '';
+  let color = 'ffffff';
+  
+  if (n.includes('python')) { slug = 'python'; color = '3776AB'; }
+  else if (n.includes('tensorflow')) { slug = 'tensorflow'; color = 'FF6F00'; }
+  else if (n.includes('openai') || n.includes('gpt')) { slug = 'openai'; color = 'ffffff'; }
+  else if (n.includes('langchain')) { slug = 'langchain'; color = '10B981'; }
+  else if (n.includes('pytorch')) { slug = 'pytorch'; color = 'EE4C2C'; }
+  else if (n.includes('node')) { slug = 'nodedotjs'; color = '339933'; }
+  else if (n.includes('aws') || n.includes('amazon')) { slug = 'amazonwebservices'; color = 'FF9900'; }
+  else if (n.includes('docker')) { slug = 'docker'; color = '2496ED'; }
+  else if (n.includes('pinecone')) { slug = 'pinecone'; color = '10B981'; }
+  else if (n.includes('postgresql') || n.includes('postgres')) { slug = 'postgresql'; color = '4169E1'; }
+  else if (n.includes('laravel')) { slug = 'laravel'; color = 'FF2D20'; }
+  else if (n.includes('kubernetes')) { slug = 'kubernetes'; color = '326CE5'; }
+  else if (n.includes('gemini')) { slug = 'googlegemini'; color = '8AB4F8'; }
+  else if (n.includes('typescript')) { slug = 'typescript'; color = '3178C6'; }
+  else if (n.includes('react') || n.includes('next')) { slug = 'react'; color = '61DAFB'; }
+  else if (n.includes('database') || n.includes('vector')) { slug = 'databricks'; color = 'FF3621'; }
+
+  if (slug && !loadError) {
+    return (
+      <img 
+        src={`https://api.iconify.design/simple-icons:${slug}.svg?color=%23${color}`}
+        alt={name}
+        className={`${className} object-contain`}
+        referrerPolicy="no-referrer"
+        onError={() => setLoadError(true)}
+      />
+    );
+  }
+
+  // Fallback to simpler code icon
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+}
 
 interface AiDevelopmentServicesPageProps {
   onBack: () => void;
@@ -671,29 +715,29 @@ export default function AiDevelopmentServicesPage({ onBack, onBookConsultation }
                 >
                   <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/[0.01] blur-xl rounded-full" />
                   <div>
-                    <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
-                      <motion.div
-                        variants={{
-                          hover: {
-                            scale: 1.15,
-                            rotate: 5,
-                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                            borderColor: 'rgba(16, 185, 129, 0.4)'
-                          }
-                        }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white shrink-0"
-                      >
-                        <TechLogo name={tech.name} className="w-5 h-5 shrink-0" />
-                      </motion.div>
-                      <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/15 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold shrink-0">
-                        {tech.category}
-                      </span>
+                    <div className="flex items-center justify-between border-b border-white/5 pb-2.5 mb-2.5">
+                      <div className="flex items-center gap-2.5">
+                        <motion.div
+                          variants={{
+                            hover: {
+                              scale: 1.15,
+                              rotate: 5,
+                              backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                              borderColor: 'rgba(16, 185, 129, 0.4)'
+                            }
+                          }}
+                          transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                          className="p-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white"
+                        >
+                          <TechLogo name={tech.name} className="w-4 h-4" />
+                        </motion.div>
+                        <span className="text-white text-[13px] font-bold tracking-wide group-hover:text-emerald-300 transition-colors">
+                          {tech.name}
+                        </span>
+                      </div>
+                      <span className="text-[8px] font-mono text-white/30 uppercase">{tech.category}</span>
                     </div>
-                    <h4 className="text-white text-[15px] font-sans font-bold tracking-tight mb-1.5 group-hover:text-emerald-300 transition-colors">
-                      {tech.name}
-                    </h4>
-                    <p className="text-white/50 text-[11.5px] leading-relaxed">
+                    <p className="text-white/50 text-[11px] leading-relaxed">
                       {tech.desc}
                     </p>
                   </div>
