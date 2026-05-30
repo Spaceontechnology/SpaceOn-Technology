@@ -17,192 +17,192 @@ import {
 
 const techLogosMap: Record<string, { logoUrl: string; color: string; bgGlow: string }> = {
   'Next.js': { 
-    logoUrl: 'https://cdn.simpleicons.org/nextdotjs/ffffff', 
+    logoUrl: 'https://api.iconify.design/simple-icons:nextdotjs.svg?color=%23ffffff', 
     color: '#ffffff',
     bgGlow: 'rgba(255,255,255,0.06)'
   },
   'React': { 
-    logoUrl: 'https://cdn.simpleicons.org/react/61DAFB', 
+    logoUrl: 'https://api.iconify.design/simple-icons:react.svg?color=%2361DAFB', 
     color: '#61DAFB',
     bgGlow: 'rgba(97,218,251,0.06)'
   },
   'TypeScript': { 
-    logoUrl: 'https://cdn.simpleicons.org/typescript/3178C6', 
+    logoUrl: 'https://api.iconify.design/simple-icons:typescript.svg?color=%233178C6', 
     color: '#3178C6',
     bgGlow: 'rgba(49,120,198,0.06)'
   },
   'Tailwind CSS': { 
-    logoUrl: 'https://cdn.simpleicons.org/tailwindcss/06B6D4', 
+    logoUrl: 'https://api.iconify.design/simple-icons:tailwindcss.svg?color=%2306B6D4', 
     color: '#06B6D4',
     bgGlow: 'rgba(6,182,212,0.06)'
   },
   'Tailwind custom tokens': { 
-    logoUrl: 'https://cdn.simpleicons.org/tailwindcss/06B6D4', 
+    logoUrl: 'https://api.iconify.design/simple-icons:tailwindcss.svg?color=%2306B6D4', 
     color: '#06B6D4',
     bgGlow: 'rgba(6,182,212,0.06)'
   },
   'Vercel Edge': { 
-    logoUrl: 'https://cdn.simpleicons.org/vercel/ffffff', 
+    logoUrl: 'https://api.iconify.design/simple-icons:vercel.svg?color=%23ffffff', 
     color: '#ffffff',
     bgGlow: 'rgba(255,255,255,0.06)'
   },
   'GraphQL': { 
-    logoUrl: 'https://cdn.simpleicons.org/graphql/E10098', 
+    logoUrl: 'https://api.iconify.design/simple-icons:graphql.svg?color=%23E10098', 
     color: '#E10098',
     bgGlow: 'rgba(225,0,152,0.06)'
   },
   'Node.js': { 
-    logoUrl: 'https://cdn.simpleicons.org/nodedotjs/339933', 
+    logoUrl: 'https://api.iconify.design/simple-icons:nodedotjs.svg?color=%23339933', 
     color: '#339933',
     bgGlow: 'rgba(51,153,51,0.06)'
   },
   'Laravel': { 
-    logoUrl: 'https://cdn.simpleicons.org/laravel/FF2D20', 
+    logoUrl: 'https://api.iconify.design/simple-icons:laravel.svg?color=%23FF2D20', 
     color: '#FF2D20',
     bgGlow: 'rgba(255,45,32,0.06)'
   },
   'Go': { 
-    logoUrl: 'https://cdn.simpleicons.org/go/00ADD8', 
+    logoUrl: 'https://api.iconify.design/simple-icons:go.svg?color=%2300ADD8', 
     color: '#00ADD8',
     bgGlow: 'rgba(0,173,216,0.06)'
   },
   'PostgreSQL': { 
-    logoUrl: 'https://cdn.simpleicons.org/postgresql/4169E1', 
+    logoUrl: 'https://api.iconify.design/simple-icons:postgresql.svg?color=%234169E1', 
     color: '#4169E1',
     bgGlow: 'rgba(65,105,225,0.06)'
   },
   'Stripe API': { 
-    logoUrl: 'https://cdn.simpleicons.org/stripe/635BFF', 
+    logoUrl: 'https://api.iconify.design/simple-icons:stripe.svg?color=%23635BFF', 
     color: '#635BFF',
     bgGlow: 'rgba(99,91,255,0.06)'
   },
   'Redis Cache': { 
-    logoUrl: 'https://cdn.simpleicons.org/redis/DC382D', 
+    logoUrl: 'https://api.iconify.design/simple-icons:redis.svg?color=%23DC382D', 
     color: '#DC382D',
     bgGlow: 'rgba(220,56,45,0.06)'
   },
   'React Native': { 
-    logoUrl: 'https://cdn.simpleicons.org/react/61DAFB', 
+    logoUrl: 'https://api.iconify.design/simple-icons:react.svg?color=%2361DAFB', 
     color: '#61DAFB',
     bgGlow: 'rgba(97,218,251,0.06)'
   },
   'Expo': { 
-    logoUrl: 'https://cdn.simpleicons.org/expo/ffffff', 
+    logoUrl: 'https://api.iconify.design/simple-icons:expo.svg?color=%23ffffff', 
     color: '#ffffff',
     bgGlow: 'rgba(255,255,255,0.06)'
   },
   'Flutter': { 
-    logoUrl: 'https://cdn.simpleicons.org/flutter/02569B', 
+    logoUrl: 'https://api.iconify.design/simple-icons:flutter.svg?color=%2302569B', 
     color: '#02569B',
     bgGlow: 'rgba(2,86,155,0.06)'
   },
   'SQLite': { 
-    logoUrl: 'https://cdn.simpleicons.org/sqlite/003B57', 
+    logoUrl: 'https://api.iconify.design/simple-icons:sqlite.svg?color=%23003B57', 
     color: '#003B57',
     bgGlow: 'rgba(0,59,87,0.06)'
   },
   'App Store Pipelines': { 
-    logoUrl: 'https://cdn.simpleicons.org/appstore/007AFF', 
+    logoUrl: 'https://api.iconify.design/simple-icons:appstore.svg?color=%23007AFF', 
     color: '#007AFF',
     bgGlow: 'rgba(0,122,255,0.06)'
   },
   'Figma Pro': { 
-    logoUrl: 'https://cdn.simpleicons.org/figma/F24E1E', 
+    logoUrl: 'https://api.iconify.design/simple-icons:figma.svg?color=%23F24E1E', 
     color: '#F24E1E',
     bgGlow: 'rgba(242,78,30,0.06)'
   },
   'Adobe Suite': { 
-    logoUrl: 'https://cdn.simpleicons.org/adobe/FF0000', 
+    logoUrl: 'https://api.iconify.design/simple-icons:adobe.svg?color=%23FF0000', 
     color: '#FF0000',
     bgGlow: 'rgba(255,0,0,0.06)'
   },
   'CSS Variables': { 
-    logoUrl: 'https://cdn.simpleicons.org/css3/1572B6', 
+    logoUrl: 'https://api.iconify.design/simple-icons:css3.svg?color=%231572B6', 
     color: '#1572B6',
     bgGlow: 'rgba(21,114,182,0.06)'
   },
   'W3C Accessibility Checker': { 
-    logoUrl: 'https://cdn.simpleicons.org/w3c/005A9C', 
+    logoUrl: 'https://api.iconify.design/simple-icons:w3c.svg?color=%23005A9C', 
     color: '#005A9C',
     bgGlow: 'rgba(0,90,156,0.06)'
   },
   'Gemini API': { 
-    logoUrl: 'https://cdn.simpleicons.org/googlegemini/8E75C2', 
+    logoUrl: 'https://api.iconify.design/simple-icons:googlegemini.svg?color=%238E75C2', 
     color: '#8E75C2',
     bgGlow: 'rgba(142,117,194,0.06)'
   },
   'TypeScript SDK': { 
-    logoUrl: 'https://cdn.simpleicons.org/typescript/3178C6', 
+    logoUrl: 'https://api.iconify.design/simple-icons:typescript.svg?color=%233178C6', 
     color: '#3178C6',
     bgGlow: 'rgba(49,120,198,0.06)'
   },
   'Python AI Libraries': { 
-    logoUrl: 'https://cdn.simpleicons.org/python/3776AB', 
+    logoUrl: 'https://api.iconify.design/simple-icons:python.svg?color=%233776AB', 
     color: '#3776AB',
     bgGlow: 'rgba(55,118,171,0.06)'
   },
   'Qdrant Vector DB': { 
-    logoUrl: 'https://cdn.simpleicons.org/qdrant/ffffff', 
+    logoUrl: 'https://api.iconify.design/simple-icons:qdrant.svg?color=%23ff4c00', 
     color: '#ff4c00',
     bgGlow: 'rgba(255,76,0,0.06)'
   },
   'FastAPI': { 
-    logoUrl: 'https://cdn.simpleicons.org/fastapi/009688', 
+    logoUrl: 'https://api.iconify.design/simple-icons:fastapi.svg?color=%23009688', 
     color: '#009688',
     bgGlow: 'rgba(0,150,136,0.06)'
   },
   'LangChain Framework': { 
-    logoUrl: 'https://cdn.simpleicons.org/langchain/ffffff', 
+    logoUrl: 'https://api.iconify.design/simple-icons:langchain.svg?color=%23ffffff', 
     color: '#ffd100',
     bgGlow: 'rgba(255,209,0,0.06)'
   },
   'Terraform': { 
-    logoUrl: 'https://cdn.simpleicons.org/terraform/844FBA', 
+    logoUrl: 'https://api.iconify.design/simple-icons:terraform.svg?color=%23844FBA', 
     color: '#844FBA',
     bgGlow: 'rgba(132,79,186,0.06)'
   },
   'Kubernetes (K8s)': { 
-    logoUrl: 'https://cdn.simpleicons.org/kubernetes/326CE5', 
+    logoUrl: 'https://api.iconify.design/simple-icons:kubernetes.svg?color=%23326CE5', 
     color: '#326CE5',
     bgGlow: 'rgba(50,108,229,0.06)'
   },
   'Docker Engine': { 
-    logoUrl: 'https://cdn.simpleicons.org/docker/2496ED', 
+    logoUrl: 'https://api.iconify.design/simple-icons:docker.svg?color=%232496ED', 
     color: '#2496ED',
     bgGlow: 'rgba(36,150,237,0.06)'
   },
   'GitHub Actions': { 
-    logoUrl: 'https://cdn.simpleicons.org/githubactions/2088FF', 
+    logoUrl: 'https://api.iconify.design/simple-icons:githubactions.svg?color=%232088FF', 
     color: '#2088FF',
     bgGlow: 'rgba(32,136,255,0.06)'
   },
   'AWS Hosting': { 
-    logoUrl: 'https://cdn.simpleicons.org/amazonwebservices/FF9900', 
+    logoUrl: 'https://api.iconify.design/simple-icons:amazonwebservices.svg?color=%23FF9900', 
     color: '#FF9900',
     bgGlow: 'rgba(255,153,0,0.06)'
   },
   'Prometheus & Grafana': { 
-    logoUrl: 'https://cdn.simpleicons.org/prometheus/E6522C', 
+    logoUrl: 'https://api.iconify.design/simple-icons:prometheus.svg?color=%23E6522C', 
     color: '#E6522C',
     bgGlow: 'rgba(230,82,44,0.06)'
   },
   'Java': { 
-    logoUrl: 'https://cdn.simpleicons.org/java/F8981D', 
+    logoUrl: 'https://api.iconify.design/logos:java.svg', 
     color: '#FFF200',
     bgGlow: 'rgba(248,152,29,0.08)'
   },
   'PHP': { 
-    logoUrl: 'https://cdn.simpleicons.org/php/777BB4', 
+    logoUrl: 'https://api.iconify.design/simple-icons:php.svg?color=%23777BB4', 
     color: '#777BB4',
     bgGlow: 'rgba(119,123,180,0.06)'
   },
   'WordPress': { 
-    logoUrl: 'https://cdn.simpleicons.org/wordpress/21759B', 
+    logoUrl: 'https://api.iconify.design/simple-icons:wordpress.svg?color=%2321759B', 
     color: '#21759B',
     bgGlow: 'rgba(33,117,155,0.06)'
   },
   'Moodle': { 
-    logoUrl: 'https://cdn.simpleicons.org/moodle/F7931E', 
+    logoUrl: 'https://api.iconify.design/simple-icons:moodle.svg?color=%23F7931E', 
     color: '#F7931E',
     bgGlow: 'rgba(247,147,30,0.06)'
   }
@@ -211,7 +211,7 @@ const techLogosMap: Record<string, { logoUrl: string; color: string; bgGlow: str
 const TechLogoElement = ({ tech }: { tech: string; key?: string }) => {
   const [loadError, setLoadError] = useState(false);
   const info = techLogosMap[tech] || {
-    logoUrl: `https://cdn.simpleicons.org/${tech.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}/ffffff`,
+    logoUrl: `https://api.iconify.design/simple-icons:${tech.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.svg?color=%23ffffff`,
     color: '#ffffff',
     bgGlow: 'rgba(255,255,255,0.05)'
   };
@@ -770,26 +770,26 @@ export default function ServiceDetailPage({ serviceId, onBack, onBookConsultatio
                 <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
                 <div className="flex items-center gap-3 pb-4 border-b border-white/[0.06]">
-                  <Activity className="w-5 h-5 text-white/60 animate-pulse" />
-                  <h4 className="text-[13px] font-mono tracking-widest text-white/40 uppercase">Architecture Telemetry</h4>
+                  <Activity className="w-5 h-5 text-white/60" />
+                  <h4 className="text-[13px] font-mono tracking-widest text-white/40 uppercase">High-Fidelity Project Metrics</h4>
                 </div>
 
                 <div className="space-y-4 text-xs font-mono">
                   <div className="flex justify-between">
-                    <span className="text-white/30">RUNTIME FRAMEWORK:</span>
-                    <span className="text-white/80 font-bold">{activeService.techStack[0] || 'VORTEX CORE'}</span>
+                    <span className="text-white/30">RUNTIME STACK:</span>
+                    <span className="text-white/80 font-bold">{activeService.techStack[0] || 'VITE STACK'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-white/30">EXECUTION TIER:</span>
-                    <span className="text-emerald-400 font-bold">OPTIMIZED EDGE / COLD-START ZERO</span>
+                    <span className="text-white/30">DEPLOYMENT MODEL:</span>
+                    <span className="text-emerald-400 font-bold">PRODUCTION CLOUD / AUTOSCALING</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-white/30">ISOLATION SECURE:</span>
-                    <span className="text-white/80 font-bold">AES-256 CONSTRAINTS</span>
+                    <span className="text-white/30">SECURITY PROTOCOL:</span>
+                    <span className="text-white/80 font-bold">SOC2 READY / END-TO-END TLS</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-white/30">MONITORING HARNESS:</span>
-                    <span className="text-white/80 font-bold">PROMETHEUS ACTIVE</span>
+                    <span className="text-white/30">DELIVERY STANDARDS:</span>
+                    <span className="text-white/80 font-bold">SLA COMPLIANT MILESTONES</span>
                   </div>
                 </div>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Github, Twitter, Linkedin, ShieldAlert, ArrowUp, Send, Instagram } from 'lucide-react';
 
 interface FooterProps {
@@ -7,6 +7,9 @@ interface FooterProps {
 }
 
 export default function Footer({ onNavigate, onContactEmail }: FooterProps) {
+  const [logoError, setLogoError] = useState(false);
+  const [msmeError, setMsmeError] = useState(false);
+  const [isoError, setIsoError] = useState(false);
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30,12 +33,24 @@ export default function Footer({ onNavigate, onContactEmail }: FooterProps) {
           {/* Main wordmark description */}
           <div className="col-span-1 sm:col-span-3 lg:col-span-2 space-y-5">
             <div className="flex items-center">
-              <img 
-                src="https://patelarsh.com/SpaceOn%20Logo/Light.png" 
-                alt="SPACEON" 
-                className="h-[44px] w-auto object-contain"
-                referrerPolicy="no-referrer"
-              />
+              {logoError ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#00df89] to-emerald-500 flex items-center justify-center text-black font-black text-base tracking-tight shadow-[0_0_15px_rgba(0,223,137,0.3)]">
+                    S
+                  </div>
+                  <span className="text-white text-xl font-black font-sans leading-none tracking-wider">
+                    SPACE<span className="text-[#00df89]">ON</span>
+                  </span>
+                </div>
+              ) : (
+                <img 
+                  src="https://patelarsh.com/SpaceOn%20Logo/Light.png" 
+                  alt="SPACEON" 
+                  className="h-[44px] w-auto object-contain"
+                  referrerPolicy="no-referrer"
+                  onError={() => setLogoError(true)}
+                />
+              )}
             </div>
             <p className="text-white/50 text-[13.5px] leading-relaxed max-w-sm">
               An elite digital engineering firm building robust software engines, scalable SaaS structures, custom AI nodes, and elegant product user interfaces for international clients.
@@ -148,23 +163,39 @@ export default function Footer({ onNavigate, onContactEmail }: FooterProps) {
             {/* Real Certification Logos above the Social Links for Enterprise Genuineness */}
             <div className="flex items-center gap-7 flex-wrap justify-start md:justify-end pb-3">
               <div className="flex items-center justify-center h-16 sm:h-20 select-none bg-transparent">
-                <img 
-                  src="https://patelarsh.com/SpaceOn%20Logo/Resourses%20Website/msme-logo.png" 
-                  alt="Government of India MSME Logo" 
-                  className="h-16 sm:h-20 w-auto object-contain transition-all duration-300 hover:scale-[1.05] will-change-transform"
-                  style={{ imageRendering: 'auto' }}
-                  referrerPolicy="no-referrer"
-                />
+                {msmeError ? (
+                  <div className="h-16 sm:h-20 px-4 bg-white/5 rounded-xl border border-white/10 flex flex-col justify-center items-center font-mono">
+                    <span className="text-[10px] text-[#00df89] font-bold">GOVT. OF INDIA</span>
+                    <span className="text-xs text-white font-extrabold tracking-wide">MSME CERTIFIED</span>
+                  </div>
+                ) : (
+                  <img 
+                    src="https://patelarsh.com/SpaceOn%20Logo/Resourses%20Website/msme-logo.png" 
+                    alt="Government of India MSME Logo" 
+                    className="h-16 sm:h-20 w-auto object-contain transition-all duration-300 hover:scale-[1.05] will-change-transform"
+                    style={{ imageRendering: 'auto' }}
+                    referrerPolicy="no-referrer"
+                    onError={() => setMsmeError(true)}
+                  />
+                )}
               </div>
               <div className="h-12 w-[1px] bg-white/10 hidden sm:block" />
               <div className="flex items-center justify-center h-16 sm:h-20 select-none bg-transparent">
-                <img 
-                  src="https://patelarsh.com/SpaceOn%20Logo/Resourses%20Website/iso.svg" 
-                  alt="ISO Certified 9001:2015" 
-                  className="h-16 sm:h-20 w-auto object-contain transition-all duration-300 hover:scale-[1.05] will-change-transform filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.08)]"
-                  style={{ imageRendering: 'auto' }}
-                  referrerPolicy="no-referrer"
-                />
+                {isoError ? (
+                  <div className="h-16 sm:h-20 px-4 bg-white/5 rounded-xl border border-white/10 flex flex-col justify-center items-center font-mono">
+                    <span className="text-[10px] text-[#00df89] font-bold">ISO 9001:2015</span>
+                    <span className="text-xs text-white font-extrabold tracking-wide">QUALITY ASSURED</span>
+                  </div>
+                ) : (
+                  <img 
+                    src="https://patelarsh.com/SpaceOn%20Logo/Resourses%20Website/iso.svg" 
+                    alt="ISO Certified 9001:2015" 
+                    className="h-16 sm:h-20 w-auto object-contain transition-all duration-300 hover:scale-[1.05] will-change-transform filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.08)]"
+                    style={{ imageRendering: 'auto' }}
+                    referrerPolicy="no-referrer"
+                    onError={() => setIsoError(true)}
+                  />
+                )}
               </div>
             </div>
 

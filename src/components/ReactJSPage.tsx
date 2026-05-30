@@ -19,6 +19,10 @@ export default function ReactJSPage({ onBack, onBookConsultation }: ReactJSPageP
   // FAQ accordion state
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
 
+  // Widget load states
+  const [clutchError, setClutchError] = useState(false);
+  const [goodfirmsError, setGoodfirmsError] = useState(false);
+
   // Form states
   const [formData, setFormData] = useState({
     name: '',
@@ -243,12 +247,17 @@ export default function ReactJSPage({ onBack, onBookConsultation }: ReactJSPageP
               {/* Clutch Block */}
               <div className="flex items-center gap-3.5 px-6 py-4 bg-white/[0.03] border border-white/10 rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:border-emerald-500/30 transition-all duration-300">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-white/15 overflow-hidden p-0.5 shrink-0 select-none">
-                  <img 
-                    src="https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg" 
-                    alt="Clutch" 
-                    className="w-full h-full object-cover rounded-full" 
-                    referrerPolicy="no-referrer"
-                  />
+                  {!clutchError ? (
+                    <img 
+                      src="https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg" 
+                      alt="Clutch" 
+                      className="w-full h-full object-cover rounded-full" 
+                      referrerPolicy="no-referrer"
+                      onError={() => setClutchError(true)}
+                    />
+                  ) : (
+                    <span className="text-xs font-black text-neutral-800 uppercase font-sans">C</span>
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
@@ -268,12 +277,17 @@ export default function ReactJSPage({ onBack, onBookConsultation }: ReactJSPageP
               {/* Goodfirms Block */}
               <div className="flex items-center gap-3.5 px-6 py-4 bg-white/[0.03] border border-white/10 rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:border-emerald-500/30 transition-all duration-300 max-w-[280px]">
                 <div className="w-9 h-9 bg-white flex items-center justify-center rounded-lg border border-white/15 overflow-hidden p-1 shrink-0 select-none">
-                  <img 
-                    src="https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png" 
-                    alt="GoodFirms" 
-                    className="w-full h-full object-contain" 
-                    referrerPolicy="no-referrer"
-                  />
+                  {!goodfirmsError ? (
+                    <img 
+                      src="https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png" 
+                      alt="GoodFirms" 
+                      className="w-full h-full object-contain" 
+                      referrerPolicy="no-referrer"
+                      onError={() => setGoodfirmsError(true)}
+                    />
+                  ) : (
+                    <span className="text-xs font-black text-neutral-800 uppercase font-sans">GF</span>
+                  )}
                 </div>
                 <div>
                   <h4 className="text-[15px] font-extrabold text-white leading-tight">GoodFirms</h4>

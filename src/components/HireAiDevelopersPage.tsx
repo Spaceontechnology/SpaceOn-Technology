@@ -4,9 +4,50 @@ import {
   ArrowLeft, Check, ChevronDown, ChevronUp, Bot, Cpu, Sparkles, 
   Code, Shield, Layers, Calendar, Terminal, ArrowRight, Zap, Play,
   Globe, Database, Server, Smartphone, Monitor, AlertCircle, RefreshCw, BarChart2,
-  ClipboardCheck, PenTool, Bug, CloudUpload
+  ClipboardCheck, PenTool, Bug, CloudUpload, Star
 } from 'lucide-react';
 import ScrollGlassReveal from './ScrollGlassReveal';
+
+function AwardIcon({ logoUrl, name, isRound }: { logoUrl?: string; name: string; isRound?: boolean }) {
+  const [error, setError] = useState(false);
+  
+  if (logoUrl && !error) {
+    return (
+      <div className={`w-9 h-9 mb-2.5 bg-white flex items-center justify-center p-1 border border-white/10 ${isRound ? 'rounded-full' : 'rounded-lg'} overflow-hidden shrink-0`}>
+        <img 
+          src={logoUrl} 
+          alt={name} 
+          className={`w-full h-full ${isRound ? 'object-cover' : 'object-contain'}`}
+          referrerPolicy="no-referrer"
+          onError={() => setError(true)}
+        />
+      </div>
+    );
+  }
+  
+  return (
+    <div className="w-9 h-9 mb-2.5 bg-emerald-500/10 border border-emerald-500/20 text-[#00df89] rounded-full flex items-center justify-center shrink-0">
+      <Star className="w-4 h-4 fill-current text-[#00df89]" />
+    </div>
+  );
+}
+
+function TechStackIcon({ logo, name, fallbackIcon: FallbackIcon }: { logo?: string; name: string; fallbackIcon: any }) {
+  const [error, setError] = useState(false);
+  
+  if (logo && !error) {
+    return (
+      <img 
+        src={logo} 
+        alt={`${name} logo`}
+        className="w-4 h-4 object-contain filter group-hover:scale-110 transition-transform"
+        referrerPolicy="no-referrer"
+        onError={() => setError(true)}
+      />
+    );
+  }
+  return <FallbackIcon className="w-3.5 h-3.5 text-emerald-400" />;
+}
 
 interface HireAiPageProps {
   onBack: () => void;
@@ -25,73 +66,73 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
     { 
       category: 'Data Storage', 
       items: [
-        { name: 'MySQL', icon: Database, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }, 
-        { name: 'AWS S3', icon: Server, logo: 'https://cdn.simpleicons.org/amazons3/FF9900' }
+        { name: 'MySQL', icon: Database, logo: 'https://api.iconify.design/simple-icons:mysql.svg?color=%234479A1' }, 
+        { name: 'AWS S3', icon: Server, logo: 'https://api.iconify.design/simple-icons:amazons3.svg?color=%23569A31' }
       ] 
     },
     { 
       category: 'Data Processing', 
       items: [
-        { name: 'Kafka', icon: Cpu, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' }
+        { name: 'Kafka', icon: Cpu, logo: 'https://api.iconify.design/simple-icons:apachekafka.svg?color=%23ffffff' }
       ] 
     },
     { 
       category: 'Machine Learning Framework', 
       items: [
-        { name: 'AWS TensorFlow', icon: Code, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' }, 
-        { name: 'AWS PyTorch', icon: Sparkles, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' }
+        { name: 'AWS TensorFlow', icon: Code, logo: 'https://api.iconify.design/simple-icons:tensorflow.svg?color=%23FF6F00' }, 
+        { name: 'AWS PyTorch', icon: Sparkles, logo: 'https://api.iconify.design/simple-icons:pytorch.svg?color=%23EE4C2C' }
       ] 
     },
     { 
       category: 'Natural Language Processing', 
       items: [
-        { name: 'Amazon Comprehend', icon: Bot, logo: 'https://cdn.simpleicons.org/amazonwebservices/FF9900' }
+        { name: 'Amazon Comprehend', icon: Bot, logo: 'https://api.iconify.design/simple-icons:amazonwebservices.svg?color=%23FF9900' }
       ] 
     },
     { 
       category: 'Model Serving', 
       items: [
-        { name: 'Amazon SageMaker', icon: Layers, logo: 'https://cdn.simpleicons.org/amazonwebservices/FF9900' }
+        { name: 'Amazon SageMaker', icon: Layers, logo: 'https://api.iconify.design/simple-icons:amazonsagemaker.svg?color=%23FF9900' }
       ] 
     },
     { 
       category: 'LLM', 
       items: [
-        { name: 'OpenAI', icon: Zap, logo: 'https://cdn.simpleicons.org/openai/white' }
+        { name: 'OpenAI', icon: Zap, logo: 'https://api.iconify.design/simple-icons:openai.svg?color=%23ffffff' }
       ] 
     },
     { 
       category: 'APIS', 
       items: [
-        { name: 'Python', icon: Code, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
+        { name: 'Python', icon: Code, logo: 'https://api.iconify.design/simple-icons:python.svg?color=%233776AB' }
       ] 
     },
     { 
       category: 'Monitoring', 
       items: [
-        { name: 'Prometheus', icon: BarChart2, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg' }, 
-        { name: 'Grafana', icon: Monitor, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg' }
+        { name: 'Prometheus', icon: BarChart2, logo: 'https://api.iconify.design/simple-icons:prometheus.svg?color=%23E6522C' }, 
+        { name: 'Grafana', icon: Monitor, logo: 'https://api.iconify.design/simple-icons:grafana.svg?color=%23F46800' }
       ] 
     },
     { 
       category: 'CI/CD', 
       items: [
-        { name: 'GitHub', icon: Globe, logo: 'https://cdn.simpleicons.org/github/white' }, 
-        { name: 'Bitbucket', icon: Shield, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg' }, 
-        { name: 'AWS', icon: Server, logo: 'https://cdn.simpleicons.org/amazonwebservices/FF9900' }
+        { name: 'GitHub', icon: Globe, logo: 'https://api.iconify.design/simple-icons:github.svg?color=%23ffffff' }, 
+        { name: 'Bitbucket', icon: Shield, logo: 'https://api.iconify.design/simple-icons:bitbucket.svg?color=%230052CC' }, 
+        { name: 'AWS', icon: Server, logo: 'https://api.iconify.design/simple-icons:amazonwebservices.svg?color=%23FF9900' }
       ] 
     },
     { 
       category: 'Containerization', 
       items: [
-        { name: 'Docker', icon: Layers, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' }, 
-        { name: 'Kubernetes', icon: Cpu, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' }
+        { name: 'Docker', icon: Layers, logo: 'https://api.iconify.design/simple-icons:docker.svg?color=%232496ED' }, 
+        { name: 'Kubernetes', icon: Cpu, logo: 'https://api.iconify.design/simple-icons:kubernetes.svg?color=%23326CE5' }
       ] 
     },
     { 
       category: 'Microservice', 
       items: [
-        { name: 'Flask', icon: Code, logo: 'https://cdn.simpleicons.org/flask/white' }
+        { name: 'Flask', icon: Code, logo: 'https://api.iconify.design/simple-icons:flask.svg?color=%23ffffff' }
       ] 
     }
   ];
@@ -380,16 +421,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
                 key={index} 
                 className="bg-[#111111] border border-white/5 rounded-xl p-5 hover:bg-neutral-900/95 hover:border-emerald-500/20 transition-all duration-300 flex flex-col items-center justify-center shadow-md select-none group min-h-[140px]"
               >
-                {award.logoUrl ? (
-                  <div className={`w-9 h-9 mb-2.5 bg-white flex items-center justify-center p-1 border border-white/10 ${award.isRound ? 'rounded-full' : 'rounded-lg'} overflow-hidden shrink-0`}>
-                    <img 
-                      src={award.logoUrl} 
-                      alt={award.name} 
-                      className={`w-full h-full ${award.isRound ? 'object-cover' : 'object-contain'}`}
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                ) : null}
+                <AwardIcon logoUrl={award.logoUrl} name={award.name} isRound={award.isRound} />
                 <span className="text-[14px] md:text-[15px] font-extrabold tracking-tight text-white font-mono group-hover:text-emerald-450 transition-colors text-center">
                   {award.name}
                 </span>
@@ -435,16 +467,7 @@ export default function HireAiDevelopersPage({ onBack, onBookConsultation }: Hir
                         key={idy}
                         className="inline-flex items-center gap-2.5 bg-white/[0.03] border border-white/10 rounded-full py-1.5 px-4.5 text-[12.5px] font-semibold tracking-wide text-white/80 hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.3)] hover:shadow-[0_2px_15px_rgba(16,185,129,0.15)] group"
                       >
-                        {item.logo ? (
-                          <img 
-                            src={item.logo} 
-                            alt={`${item.name} logo`}
-                            className="w-4 h-4 object-contain filter group-hover:scale-110 transition-transform"
-                            referrerPolicy="no-referrer"
-                          />
-                        ) : (
-                          <ItemIcon className="w-3.5 h-3.5 text-emerald-400" />
-                        )}
+                        <TechStackIcon logo={item.logo} name={item.name} fallbackIcon={ItemIcon} />
                         <span>{item.name}</span>
                       </span>
                     );

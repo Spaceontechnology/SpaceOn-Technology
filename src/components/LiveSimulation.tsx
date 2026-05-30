@@ -41,13 +41,13 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
         {/* Section Heading with Contrast Highlights */}
         <div className="max-w-3xl mb-16">
           <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-neutral-400 block mb-3 font-bold">
-            Interactive Engine Simulation / Section 05
+            Interactive Video Showcase / Section 05
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 font-sans leading-tight">
-            Our Orchestration Engine <span className="text-neutral-400 font-medium font-sans">In Real-Time</span>
+            Our Interactive Product Design <span className="text-neutral-400 font-medium font-sans">In Action</span>
           </h2>
           <p className="text-[15px] sm:text-[16px] text-neutral-400 leading-relaxed font-medium">
-            Inspect the live spatial mapping and automated layout pipeline compiling backend nodes safely. Interact with the feed speeds below to simulate workloads first-hand.
+            Observe the production layout patterns and smooth rendering speed we build for global enterprises. Interact with the video playback rates below to view transition fluidity.
           </p>
         </div>
 
@@ -62,13 +62,13 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
             <div className="space-y-8 relative z-10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />
-                  <span className="text-[10px] font-mono tracking-widest text-white/50 font-bold uppercase">
-                    SIMULATION COMMANDS
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] font-mono tracking-widest text-[#00df89] font-bold uppercase">
+                    SHOWCASE OPTIONS
                   </span>
                 </div>
                 <span className="text-[9px] font-mono text-white/30 border border-white/10 rounded px-2 py-0.5">
-                  V.92_CORE
+                  DEMO_S4
                 </span>
               </div>
 
@@ -84,7 +84,7 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
                         : 'text-white/60 hover:text-white hover:bg-white/[0.02]'
                     }`}
                   >
-                    {tab}
+                    {tab === 'orchestration' ? 'Design' : tab === 'metrics' ? 'Speed' : 'Structure'}
                   </button>
                 ))}
               </div>
@@ -94,15 +94,15 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
                 {activeTab === 'orchestration' && (
                   <div className="space-y-3">
                     <h4 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-                      <Cpu className="w-4 h-4 text-white/70" />
-                      Dynamic Vector Layout
+                      <Cpu className="w-4 h-4 text-emerald-400" />
+                      Dynamic Vector Layouts
                     </h4>
                     <p className="text-[13px] text-white/60 leading-relaxed font-sans">
-                      Our proprietary neural mapping algorithm distributes content frames smoothly based on active screen weight, responsive aspect vectors, and device geometry.
+                      Our modern layout grids distribute modules cleanly based on device viewport sizes, dynamic pixel densities, and custom fluid responsive dimensions.
                     </p>
                     <div className="pt-2 flex flex-wrap gap-2">
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/70">Auto-Scaling</span>
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/70">Weight Anchors</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-[#00df89]">Auto-Scaling Grids</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/70">Fluid Columns</span>
                     </div>
                   </div>
                 )}
@@ -110,15 +110,15 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
                 {activeTab === 'metrics' && (
                   <div className="space-y-3">
                     <h4 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-white/70" />
-                      Spatial Output KPI
+                      <Activity className="w-4 h-4 text-emerald-400" />
+                      Performance Indicators
                     </h4>
                     <p className="text-[13px] text-white/60 leading-relaxed font-sans">
-                      Tracks interface frame rates, network loading queues, and dynamic coordinate translations inside the sandboxed delivery environment.
+                      Maintains maximum paint cycles, instant navigation responses, and minimal bundle overhead to exceed competitive Lighthouse speed scores.
                     </p>
                     <div className="pt-2 flex flex-wrap gap-2">
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Frame: 60fps stable</span>
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Idle load: 0.12% CPU</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-[#00df89]">Stable 60 FPS</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Low Memory Load</span>
                     </div>
                   </div>
                 )}
@@ -126,15 +126,15 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
                 {activeTab === 'nodes' && (
                   <div className="space-y-3">
                     <h4 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-                      <Layers className="w-4 h-4 text-white/70" />
-                      Sub-layer Pipelines
+                      <Layers className="w-4 h-4 text-emerald-400" />
+                      Modular Architecture
                     </h4>
                     <p className="text-[13px] text-white/60 leading-relaxed font-sans">
-                      Hierarchical thread caching is decoupled into isolated sub-states, ensuring no page component blocks primary browser interactions or scroll events.
+                      Highly decoupled client-side modules are built in independent chunks, guaranteeing seamless interaction feedback and no blockages on continuous scroll.
                     </p>
                     <div className="pt-2 flex flex-wrap gap-2">
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Concurrent Threads: 4</span>
-                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Sub-State Safe</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-[#00df89]">Decoupled Components</span>
+                      <span className="text-[9.5px] font-mono bg-white/10 px-2.5 py-1 rounded border border-white/5 text-white/75">Clean Code-Splitting</span>
                     </div>
                   </div>
                 )}
@@ -144,20 +144,20 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
             {/* Bottom Panel Actions */}
             <div className="pt-6 border-t border-white/5 relative z-10 space-y-4">
               <div className="flex items-center justify-between text-[11px] font-mono text-white/40">
-                <span>SIMULATION CONTROLS</span>
+                <span>INTERACTIVE CONTROLS</span>
                 <span className="flex items-center gap-1">
-                  <HardDrive className="w-3 h-3 text-white/30" />
-                  ONLINE &amp; RESPONSIVE
+                  <HardDrive className="w-3 h-3 text-emerald-400" />
+                  ONLINE DEMO ACTIVE
                 </span>
               </div>
 
               <div className="flex gap-2.5">
                 <button
                   onClick={togglePlayback}
-                  className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 transition-colors rounded-xl text-black font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="flex-1 py-3 px-4 bg-emerald-500 hover:bg-emerald-400 transition-colors rounded-xl text-black font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                 >
                   {isPlaying ? <Pause className="w-3.5 h-3.5 fill-black" /> : <Play className="w-3.5 h-3.5 fill-black" />}
-                  <span>{isPlaying ? 'Pause Feed' : 'Resume Feed'}</span>
+                  <span>{isPlaying ? 'Pause Demo' : 'Play Demo'}</span>
                 </button>
 
                 <div className="flex border border-white/10 rounded-xl overflow-hidden bg-white/5 p-0.5">
@@ -205,7 +205,7 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none select-none">
                 <span className="text-[9px] font-mono bg-black/60 border border-white/10 text-white rounded px-2.5 py-1 flex items-center gap-1.5 backdrop-blur-md">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  STREAMFEED://ACTIVE_PIPELINE
+                  HQ_MEDIA://ACTIVE_DEMO
                 </span>
                 
                 <span className="text-[9px] font-mono bg-black/60 border border-white/10 text-white rounded px-2.5 py-1 backdrop-blur-md uppercase tracking-wider">
@@ -228,11 +228,11 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
                     RENDER-ACCELERATED
                   </span>
                   <span className="text-[8px] font-mono bg-black/50 text-white/50 rounded px-2 py-0.5 backdrop-blur-xs">
-                    HEVC STREAM
+                    HIGH CONFIGURATION
                   </span>
                 </div>
                 <span className="text-[10px] font-mono text-white/60 tracking-tight font-semibold">
-                  SECURE DECRYPTION KEY CH-728
+                  HIGH-FIDELITY DESIGN SYSTEM
                 </span>
               </div>
             </div>
@@ -241,21 +241,21 @@ export default function LiveSimulation({ onScheduleCall }: LiveSimulationProps) 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-neutral-900 rounded-2xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.02)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] border border-neutral-100 dark:border-white/[0.04]">
               <div className="space-y-1">
                 <h5 className="text-[13px] font-bold text-neutral-900 dark:text-white flex items-center gap-1.5 font-sans">
-                  <Sparkles className="w-3.5 h-3.5 text-neutral-500 dark:text-neutral-400" />
-                  Zero Bottleneck Thread Allocation
+                  <Sparkles className="w-3.5 h-3.5 text-[#00df89]" />
+                  Fluid UI Rehydration Layout
                 </h5>
-                <p className="text-[12px] text-neutral-500 dark:text-neutral-300 leading-relaxed font-medium">
-                  By routing animation processes through custom browser GPU registers, components sustain pristine 60-120fps motion smoothly.
+                <p className="text-[12px] text-neutral-500 dark:text-neutral-400 leading-relaxed font-semibold">
+                  Optimized browser render cycles keep animation loops and component entry motions visually flawless.
                 </p>
               </div>
 
               <div className="space-y-1">
                 <h5 className="text-[13px] font-bold text-neutral-900 dark:text-white flex items-center gap-1.5 font-sans">
-                  <RefreshCw className="w-3.5 h-3.5 text-neutral-500 dark:text-neutral-400" />
-                  Dynamic State Synchronization
+                  <RefreshCw className="w-3.5 h-3.5 text-[#00df89]" />
+                  Smooth State Updates
                 </h5>
-                <p className="text-[12px] text-neutral-500 dark:text-neutral-300 leading-relaxed font-medium">
-                  Watch database actions reflect instantly inside client-side templates without page-wide rebuild flickers or packet latency.
+                <p className="text-[12px] text-neutral-500 dark:text-neutral-400 leading-relaxed font-semibold">
+                  Changes manifest instantly across responsive templates without causing layout shifts, performance bottlenecks, or micro-stutters.
                 </p>
               </div>
             </div>

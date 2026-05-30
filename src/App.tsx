@@ -18,6 +18,7 @@ import AiAugmentedDeveloperPage from './components/AiAugmentedDeveloperPage';
 import RequestQuotePage from './components/RequestQuotePage';
 import ProductEngineeringPage from './components/ProductEngineeringPage';
 import TechnologyDetailPage from './components/TechnologyDetailPage';
+import ScheduleMeetingPage from './components/ScheduleMeetingPage';
 import { 
   ServicesPage, AboutPage, ProjectsPage, BlogPage, ContactPage, TechnologiesPage 
 } from './components/InternalPages';
@@ -46,75 +47,191 @@ interface LogMessage {
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [logoError, setLogoError] = useState(false);
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(() => {
+    // Priority 1: Check URL search params for fallback compatibility
     const params = new URLSearchParams(window.location.search);
-    return params.get('service');
+    const serviceParam = params.get('service');
+    if (serviceParam) return serviceParam;
+
+    // Priority 2: Check URL clean pathname
+    const pathname = window.location.pathname;
+    if (pathname === '/' || pathname === '/index.html' || pathname === '') {
+      return null;
+    }
+
+    // Direct exact path mappings
+    if (pathname === '/about') return 'about';
+    if (pathname === '/contact') return 'contact';
+    if (pathname === '/projects' || pathname === '/portfolio') return 'projects-page';
+    if (pathname === '/blog' || pathname === '/insights') return 'blog-page';
+    if (pathname === '/technologies') return 'technologies-page';
+    if (pathname === '/services') return 'services-page';
+    if (pathname === '/request-quote') return 'request-quote';
+    if (pathname === '/schedule-a-meeting' || pathname === '/schedule') return 'schedule-a-meeting';
+
+    // Technology detail mappings (e.g., /technology/java -> tech-java)
+    if (pathname.startsWith('/technology/') || pathname.startsWith('/technologies/')) {
+      const parts = pathname.split('/');
+      const techName = parts[parts.length - 1];
+      if (techName) {
+        return techName.startsWith('tech-') ? techName : `tech-${techName}`;
+      }
+    }
+
+    // Service detail page mappings (e.g., /services/saas-dev -> saas-dev)
+    if (pathname.startsWith('/services/')) {
+      const parts = pathname.split('/');
+      const serviceName = parts[parts.length - 1];
+      if (serviceName) {
+        // Handle common convenient route abbreviations
+        if (serviceName === 'saas' || serviceName === 'saas-development') return 'saas-dev';
+        if (serviceName === 'web' || serviceName === 'web-development') return 'web-dev';
+        if (serviceName === 'mobile' || serviceName === 'mobile-app-development' || serviceName === 'mobile-development') return 'mobile-app';
+        if (serviceName === 'ai' || serviceName === 'ai-development' || serviceName === 'ai-dev') return 'ai-automation';
+        if (serviceName === 'ai-augmented' || serviceName === 'ai-augmented-developer') return 'ai-augmented-dev';
+        if (serviceName === 'hire-ai' || serviceName === 'hire-ai-developers') return 'hire-ai-devs';
+        if (serviceName === 'product-engineering') return 'product-eng';
+        return serviceName;
+      }
+    }
+
+    // Fallback URL sub-segment checks
+    const cleanPath = pathname.replace(/^\//, '');
+    if (cleanPath) {
+      if ([
+        'saas-dev', 'web-dev', 'mobile-app', 'ai-automation', 'product-eng', 
+        'ai-augmented-dev', 'hire-ai-devs', 'ui-ux', 'cloud-devops', 'custom-software'
+      ].includes(cleanPath)) {
+        return cleanPath;
+      }
+    }
+
+    return null;
   });
   const [initialService, setInitialService] = useState('Custom Software Development');
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   
-  // Real-time developer system toasting telemetry feed logs
+  // Real-time developer system router pathways
   const [toasts, setToasts] = useState<LogMessage[]>([]);
 
   const addLog = (text: string, type: 'info' | 'success' | 'warning' = 'info') => {
-    const timeStr = new Date().toLocaleTimeString('en-US', { hour12: false });
-    const newLog: LogMessage = {
-      id: Math.random().toString(),
-      timestamp: timeStr,
-      type,
-      text
-    };
-    setToasts((prev) => [newLog, ...prev].slice(0, 4));
+    console.log(`[Router] ${text}`);
   };
 
-  // Initial load simulation telemetry keys
+  // Initial load transition
   useEffect(() => {
     const loaderTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 1700);
-
-    addLog("Vortex Core OS synchronized securely with Cloud host.", "success");
-    const t1 = setTimeout(() => {
-      addLog("Cryptographic keys loaded into memory cache.", "info");
-    }, 1500);
-    const t2 = setTimeout(() => {
-      addLog("SPACEON global multi-zone cluster online. Delivery desk available.", "success");
-    }, 3000);
+    }, 1200);
 
     return () => {
       clearTimeout(loaderTimer);
-      clearTimeout(t1);
-      clearTimeout(t2);
     };
   }, []);
 
-  // Synchronize 'service' query parameter with state to keep URLs deep-linkable
+  // Synchronize URL path with State to keep URLs clean and deep-linkable
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const currentServiceInUrl = params.get('service');
-    if (selectedServiceId !== currentServiceInUrl) {
-      const url = new URL(window.location.href);
-      if (selectedServiceId) {
-        url.searchParams.set('service', selectedServiceId);
-        addLog(`Transitioning URL routing sub-mesh state: "?service=${selectedServiceId}"`, "info");
+    const pathname = window.location.pathname;
+    
+    // Determine target URL path based on state
+    let targetPath = '/';
+    if (selectedServiceId) {
+      if (selectedServiceId === 'about') targetPath = '/about';
+      else if (selectedServiceId === 'contact') targetPath = '/contact';
+      else if (selectedServiceId === 'projects-page') targetPath = '/projects';
+      else if (selectedServiceId === 'blog-page') targetPath = '/blog';
+      else if (selectedServiceId === 'technologies-page') targetPath = '/technologies';
+      else if (selectedServiceId === 'services-page') targetPath = '/services';
+      else if (selectedServiceId === 'request-quote') targetPath = '/request-quote';
+      else if (selectedServiceId === 'schedule-a-meeting') targetPath = '/schedule-a-meeting';
+      else if (selectedServiceId.startsWith('tech-')) {
+        targetPath = `/technology/${selectedServiceId.replace('tech-', '')}`;
+      } else if (selectedServiceId === 'saas-dev') {
+        targetPath = '/services/saas-dev';
+      } else if (selectedServiceId === 'web-dev') {
+        targetPath = '/services/web-dev';
+      } else if (selectedServiceId === 'mobile-app') {
+        targetPath = '/services/mobile-app';
+      } else if (selectedServiceId === 'ai-automation') {
+        targetPath = '/services/ai-automation';
+      } else if (selectedServiceId === 'ai-augmented-dev') {
+        targetPath = '/services/ai-augmented-dev';
+      } else if (selectedServiceId === 'hire-ai-devs') {
+        targetPath = '/services/hire-ai-devs';
+      } else if (selectedServiceId === 'product-eng') {
+        targetPath = '/services/product-eng';
       } else {
-        url.searchParams.delete('service');
-        addLog("Reverting URL routing thread to primary software suite.", "info");
+        targetPath = `/services/${selectedServiceId}`;
       }
+    }
+
+    // Only trigger history pushState if there's an actual mismatch
+    if (pathname !== targetPath) {
+      const url = new URL(targetPath, window.location.origin);
+      addLog(`Transitioning URL routing sub-mesh state to: "${targetPath}"`, "info");
       window.history.pushState({ serviceId: selectedServiceId }, '', url.toString());
     }
   }, [selectedServiceId]);
 
-  // Support standard browser history popstate interactions (back/forward keys)
+  // Support standard browser history popstate interactions (back/forward buttons)
   useEffect(() => {
     const handlePopState = () => {
+      const pathname = window.location.pathname;
       const params = new URLSearchParams(window.location.search);
-      const service = params.get('service');
-      setSelectedServiceId(service);
-      addLog(`Browser popstate handled: "${service || 'Root Suite'}"`, "warning");
+      const serviceSearch = params.get('service');
+      
+      if (serviceSearch) {
+        setSelectedServiceId(serviceSearch);
+        addLog(`Browser popstate search param handled: "${serviceSearch}"`, "warning");
+        return;
+      }
+
+      if (pathname === '/' || pathname === '/index.html' || pathname === '') {
+        setSelectedServiceId(null);
+        addLog("Browser popstate root handled", "warning");
+        return;
+      }
+
+      // Check pages
+      if (pathname === '/about') setSelectedServiceId('about');
+      else if (pathname === '/contact') setSelectedServiceId('contact');
+      else if (pathname === '/projects' || pathname === '/portfolio') setSelectedServiceId('projects-page');
+      else if (pathname === '/blog' || pathname === '/insights') setSelectedServiceId('blog-page');
+      else if (pathname === '/technologies') setSelectedServiceId('technologies-page');
+      else if (pathname === '/services') setSelectedServiceId('services-page');
+      else if (pathname === '/request-quote') setSelectedServiceId('request-quote');
+      else if (pathname === '/schedule-a-meeting' || pathname === '/schedule') setSelectedServiceId('schedule-a-meeting');
+      else if (pathname.startsWith('/technology/') || pathname.startsWith('/technologies/')) {
+        const parts = pathname.split('/');
+        const techName = parts[parts.length - 1];
+        if (techName) {
+          const mapped = techName.startsWith('tech-') ? techName : `tech-${techName}`;
+          setSelectedServiceId(mapped);
+        }
+      } else if (pathname.startsWith('/services/')) {
+        const parts = pathname.split('/');
+        const serviceName = parts[parts.length - 1];
+        if (serviceName) {
+          let mapped = serviceName;
+          if (serviceName === 'saas' || serviceName === 'saas-development') mapped = 'saas-dev';
+          else if (serviceName === 'web' || serviceName === 'web-development') mapped = 'web-dev';
+          else if (serviceName === 'mobile' || serviceName === 'mobile-app-development' || serviceName === 'mobile-development') mapped = 'mobile-app';
+          else if (serviceName === 'ai' || serviceName === 'ai-development' || serviceName === 'ai-dev') mapped = 'ai-automation';
+          else if (serviceName === 'ai-augmented' || serviceName === 'ai-augmented-developer') mapped = 'ai-augmented-dev';
+          else if (serviceName === 'hire-ai' || serviceName === 'hire-ai-developers') mapped = 'hire-ai-devs';
+          else if (serviceName === 'product-engineering') mapped = 'product-eng';
+          setSelectedServiceId(mapped);
+        }
+      } else {
+        setSelectedServiceId(null);
+      }
+      
+      addLog(`Browser popstate pathname handled: "${pathname}"`, "warning");
     };
+
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
@@ -294,6 +411,11 @@ export default function App() {
       desc = "Get a precise engineering estimate and consultation for your custom software development, mobile application, SaaS platform, or AI project.";
       keywords = "Request Software Quote, Custom software cost estimation, Hire developers quote";
       canonical = "https://spaceon.in/contact";
+    } else if (selectedServiceId === 'schedule-a-meeting') {
+      title = "Schedule a Meeting | SpaceOn Technology";
+      desc = "Book a strategic consultation or architecture review session with our core digital engineering group directly via Calendly.";
+      keywords = "Book appointment, Schedule call, Calendly integration, custom software consultation";
+      canonical = "https://spaceon.in/schedule-a-meeting";
     } else if (selectedServiceId === 'about') {
       title = "About SpaceOn Technology | Enterprise Software Engineering";
       desc = "Learn about SpaceOn Technology, a premium enterprise software engineering and digital transformation company enabling modern businesses to scale.";
@@ -405,13 +527,9 @@ export default function App() {
   };
 
   const handleBookConsultation = (serviceFocus?: string) => {
-    addLog(`Consultation pre-set focused on: "${serviceFocus || 'General Spec Audit'}"`, "info");
-    if (serviceFocus) {
-      setInitialService(serviceFocus);
-    } else {
-      setInitialService('Custom Software Development');
-    }
-    setConsultationOpen(true);
+    addLog(`Client clicked Book Consultation - routing to schedule-a-meeting: "${serviceFocus || 'General Spec Audit'}"`, "success");
+    setSelectedServiceId('schedule-a-meeting');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleViewPortfolio = () => {
@@ -437,6 +555,12 @@ export default function App() {
 
     if (dest === 'home') {
       setSelectedServiceId(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (dest === 'schedule-a-meeting' || dest === 'schedule' || dest.includes('meeting') || dest.includes('consultation')) {
+      setSelectedServiceId('schedule-a-meeting');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -572,15 +696,27 @@ export default function App() {
                 className="relative z-10 flex flex-col items-center text-center px-6 select-none"
               >
               <div className="flex flex-col items-center gap-6">
-                <motion.img
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  src="https://patelarsh.com/SpaceOn%20Logo/Light.png"
-                  alt="SPACEON"
-                  className="h-[50px] sm:h-[65px] md:h-[80px] w-auto object-contain"
-                  referrerPolicy="no-referrer"
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
+                {logoError ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#00df89] to-emerald-500 flex items-center justify-center text-black font-black text-2xl tracking-tight shadow-[0_0_25px_rgba(0,223,137,0.4)]">
+                      S
+                    </div>
+                    <span className="text-white text-3xl font-black font-sans leading-none tracking-wider mt-2">
+                      SPACE<span className="text-[#00df89]">ON</span>
+                    </span>
+                  </div>
+                ) : (
+                  <motion.img
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    src="https://patelarsh.com/SpaceOn%20Logo/Light.png"
+                    alt="SPACEON"
+                    className="h-[50px] sm:h-[65px] md:h-[80px] w-auto object-contain"
+                    referrerPolicy="no-referrer"
+                    onError={() => setLogoError(true)}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  />
+                )}
                 
                 {/* Minimalist spinner alongside logo */}
                 <div className="flex items-center gap-2 mt-2">
@@ -632,6 +768,14 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               initialService={initialService}
+            />
+          ) : selectedServiceId === 'schedule-a-meeting' ? (
+            <ScheduleMeetingPage 
+              onBack={() => {
+                addLog("Restoring main software suite layout.", "info");
+                setSelectedServiceId(null);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
           ) : selectedServiceId === 'product-eng' ? (
             <ProductEngineeringPage 

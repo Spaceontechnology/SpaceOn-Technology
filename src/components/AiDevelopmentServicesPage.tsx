@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import ScrollGlassReveal from './ScrollGlassReveal';
 
+import TechLogo from './TechLogo';
+
 interface AiDevelopmentServicesPageProps {
   onBack: () => void;
   onBookConsultation: (subject?: string) => void;
@@ -72,18 +74,18 @@ export default function AiDevelopmentServicesPage({ onBack, onBookConsultation }
   ];
 
   const techStack = [
-    { name: 'Python', category: 'infrastructure', desc: 'Enterprise model architecture orchestration core.' },
-    { name: 'TensorFlow', category: 'models', desc: 'Deep neural graph optimization structures.' },
-    { name: 'OpenAI APIs', category: 'models', desc: 'Global context API models and GPT nodes.' },
-    { name: 'LangChain', category: 'pipelines', desc: 'Sophisticated cognitive chain execution loop.' },
-    { name: 'PyTorch', category: 'models', desc: 'Highly efficient model fine-tuning arrays.' },
-    { name: 'Node.js', category: 'infrastructure', desc: 'Accelerated low-latency server middleware.' },
-    { name: 'AWS', category: 'infrastructure', desc: 'Secure cloud VPC cluster nodes and storage.' },
-    { name: 'Docker', category: 'infrastructure', desc: 'Decoupled, pristine secure sandbox containers.' },
-    { name: 'Pinecone', category: 'pipelines', desc: 'High-speed cloud native vector databases.' },
-    { name: 'PostgreSQL', category: 'pipelines', desc: 'Relational ACID structured transactional models.' },
-    { name: 'Vector Databases', category: 'pipelines', desc: 'Hierarchical Navigable Small World (HNSW) indexing.' },
-    { name: 'React', category: 'infrastructure', desc: 'Premium responsive stateful interactive layout.' }
+    { name: 'Python', category: 'infrastructure', icon: Code, desc: 'Enterprise model architecture orchestration core.' },
+    { name: 'TensorFlow', category: 'models', icon: Brain, desc: 'Deep neural graph optimization structures.' },
+    { name: 'OpenAI APIs', category: 'models', icon: Bot, desc: 'Global context API models and GPT nodes.' },
+    { name: 'LangChain', category: 'pipelines', icon: Workflow, desc: 'Sophisticated cognitive chain execution loop.' },
+    { name: 'PyTorch', category: 'models', icon: Cpu, desc: 'Highly efficient model fine-tuning arrays.' },
+    { name: 'Node.js', category: 'infrastructure', icon: Zap, desc: 'Accelerated low-latency server middleware.' },
+    { name: 'AWS', category: 'infrastructure', icon: Globe, desc: 'Secure cloud VPC cluster nodes and storage.' },
+    { name: 'Docker', category: 'infrastructure', icon: Terminal, desc: 'Decoupled, pristine secure sandbox containers.' },
+    { name: 'Pinecone', category: 'pipelines', icon: Settings, desc: 'High-speed cloud native vector databases.' },
+    { name: 'PostgreSQL', category: 'pipelines', icon: Database, desc: 'Relational ACID structured transactional models.' },
+    { name: 'Vector Databases', category: 'pipelines', icon: Layers, desc: 'Hierarchical Navigable Small World (HNSW) indexing.' },
+    { name: 'React', category: 'infrastructure', icon: Sparkles, desc: 'Premium responsive stateful interactive layout.' }
   ];
 
   const caseStudies = [
@@ -649,23 +651,55 @@ export default function AiDevelopmentServicesPage({ onBack, onBookConsultation }
 
           {/* Floating Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {filteredTech.map((tech, i) => (
-              <div 
-                key={i}
-                className="bg-neutral-950/40 border border-white/5 rounded-2xl p-5 hover:border-emerald-500/25 transition-all group duration-300 relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/[0.02] blur-xl rounded-full" />
-                <div className="flex items-center justify-between border-b border-white/5 pb-2.5 mb-2.5">
-                  <span className="text-white text-[13px] font-bold tracking-wide group-hover:text-emerald-300 transition-colors">
-                    {tech.name}
-                  </span>
-                  <span className="text-[8px] font-mono text-white/30 uppercase">{tech.category}</span>
-                </div>
-                <p className="text-white/50 text-[11px] leading-relaxed">
-                  {tech.desc}
-                </p>
-              </div>
-            ))}
+            {filteredTech.map((tech, i) => {
+              const Icon = tech.icon;
+              return (
+                <motion.div 
+                  key={i}
+                  whileHover="hover"
+                  variants={{
+                    hover: {
+                      scale: 1.03,
+                      y: -4,
+                      borderColor: 'rgba(16, 185, 129, 0.35)',
+                      backgroundColor: 'rgba(23, 23, 23, 0.85)',
+                      boxShadow: '0 20px 45px rgba(16, 185, 129, 0.12)'
+                    }
+                  }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 25 }}
+                  className="bg-neutral-950/40 border border-white/5 rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between group cursor-pointer"
+                >
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/[0.01] blur-xl rounded-full" />
+                  <div>
+                    <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
+                      <motion.div
+                        variants={{
+                          hover: {
+                            scale: 1.15,
+                            rotate: 5,
+                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                            borderColor: 'rgba(16, 185, 129, 0.4)'
+                          }
+                        }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white shrink-0"
+                      >
+                        <TechLogo name={tech.name} className="w-5 h-5 shrink-0" />
+                      </motion.div>
+                      <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/15 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold shrink-0">
+                        {tech.category}
+                      </span>
+                    </div>
+                    <h4 className="text-white text-[15px] font-sans font-bold tracking-tight mb-1.5 group-hover:text-emerald-300 transition-colors">
+                      {tech.name}
+                    </h4>
+                    <p className="text-white/50 text-[11.5px] leading-relaxed">
+                      {tech.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

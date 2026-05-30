@@ -22,49 +22,49 @@ export default function PortfolioModal({ isOpen, onClose, onBookConsultation, de
   const projects: (ProjectItem & { details: string; stack: string[]; icon: any })[] = [
     {
       id: 'aether-core',
-      title: 'Aether Core Consensus Network',
-      category: 'Cryptographic Protocol Engineering',
-      description: 'High-throughput sovereign consensus framework scaling layers for multi-billion dollar decentralized financial applications.',
-      metrics: '140,000+ Trans / Sec Settle',
+      title: 'Aether Global Financial Ledger',
+      category: 'Fintech & Transaction Networks',
+      description: 'High-throughput secure transaction routing system and double-entry ledger platform scaling multi-currency settlement processes globally.',
+      metrics: '55,000+ Transactions Per Second',
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop',
-      details: 'We built a bespoke sovereign proof-of-stake parallelized execution environment designed to resolve high transaction contention by allocating dynamic transaction queues based on network state and custom cryptography layers.',
-      stack: ['Rust', 'WebAssembly', 'gRPC', 'RocksDB', 'ECDSA'],
+      details: 'We built a custom transactional state engine engineered to handle high-frequency payment entries without synchronization locks. Includes robust auditing, cryptographically signed ledger hashes, and seamless integration with institutional bank APIs.',
+      stack: ['Rust', 'gRPC', 'RocksDB', 'PostgreSQL', 'ECDSA'],
       icon: Shield
     },
     {
       id: 'luminary-ai',
-      title: 'Luminary AI Analytical Graph',
-      category: 'Cognitive Computing & Graphs',
-      description: 'Distributed molecular mapping ontologies orchestrating real-time reasoning models and data embeddings for biomedical discovery.',
-      metrics: '14ms Avg Query Speed / 99% Accuracy',
+      title: 'Luminary Enterprise Health Platform',
+      category: 'Healthcare SaaS & Data Systems',
+      description: 'Intelligent clinical workflow automation and medical records query engine built to accelerate data lookups across distributed healthcare networks safely.',
+      metrics: '45% Medical Record Retrieval Boost',
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2864&auto=format&fit=crop',
-      details: 'Developed a massively parallelized vector embedding mapping graph structure integrating distributed neural-net reasoning nodes with molecular graphs for swift diagnostic simulations and synthetic component analysis.',
-      stack: ['Python', 'PyTorch', 'Rust', 'Neo4j', 'FastAPI'],
+      details: 'Developed a scalable clinical research and patient intake workflow manager. Leverages contextual vector caches and highly structured search indexes to resolve health documentation lookup times, fully compliant under HIPAA guidelines.',
+      stack: ['Python', 'FastAPI', 'React', 'Neo4j', 'Elasticsearch'],
       icon: Code2
     },
     {
       id: 'vortex-mid',
-      title: 'Vortex Cloud Core Middleware',
-      category: 'Distributed Systems & Cloud-Native',
-      description: 'High-density container scheduler allocating resources in virtualized environments with minimal file-system execution latency.',
-      metrics: '35% Infrastructure Resource Reduction',
+      title: 'Nova Cloud Infrastructure Orchestrator',
+      category: 'Cloud SaaS & Systems DevOps',
+      description: 'High-density container scheduler and autoscaling engine allocating active cluster resources and database nodes across complex AWS VPC groups.',
+      metrics: '35% Infrastructure Operational Savings',
       image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2794&auto=format&fit=crop',
-      details: 'Built a lightweight, container-orchestration layer wrapping Linux namespaces directly to yield high-speed scaling triggers, scaling up to 12,000 Docker pods in milliseconds without hitting system thread pools.',
-      stack: ['Go', 'eBPF', 'gRPC', 'Kubernetes', 'Prometheus'],
+      details: 'Built a lightweight, highly automated cloud infrastructure scaler utilizing custom triggers to dispatch containers dynamically. Wraps native AWS Auto-Scaling and container schedulers, scaling up resources safely during high-traffic surges.',
+      stack: ['Go', 'Docker', 'Kubernetes', 'AWS Hosting', 'Prometheus'],
       icon: Database
     },
     {
       id: 'chronos-systems',
-      title: 'Chronos Real-Time Aggregator',
-      category: 'Financial High-Frequency Infrastructure',
-      description: 'Sub-millisecond latency messaging buffers processing order-book events and streaming multi-exchange market indices.',
-      metrics: '4-µs Peer-to-Peer Sync Frequency',
+      title: 'Aegis Real-Time Financial Settlement Suite',
+      category: 'Corporate Finance & Ledger Security',
+      description: 'Sub-millisecond latency payment messaging buffer processing high-frequency ledger events and streaming secure financial transactions.',
+      metrics: 'Real-Time Audit Reconciliation',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop',
-      details: 'Engineered memory-mapped WebSocket streams and non-blocking ring-buffer message queues bypassing standard OS network stacks to deliver market books, arbitrage events, and quotes without memory GC pauses.',
-      stack: ['C++', 'Aeron', 'SBE Encoded', 'WebSockets', 'AWS API'],
+      details: 'Engineered a highly resilient high-volume event processor operating on non-blocking ring-buffer memory files. Bypasses database connection limits by queuing incoming billing settlements before committing them, ensuring zero transaction drop rates.',
+      stack: ['C++', 'Aeron', 'WebSockets', 'AWS Hosting'],
       icon: Zap
     }
-  ] as any;
+  ];
 
   return (
     <AnimatePresence>

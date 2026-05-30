@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import TechLogo from './TechLogo';
 
 interface TechStackProps {
   onViewTechDetail?: (techId: string) => void;
@@ -17,7 +18,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(97,218,251,0.15)', 
       borderColor: 'group-hover:border-[#61DAFB]/40',
       shadowColor: 'shadow-[#61DAFB]/10',
-      logoUrl: 'https://cdn.simpleicons.org/react/61DAFB'
+      logoUrl: 'https://api.iconify.design/simple-icons:react.svg?color=%2361DAFB'
     },
     { 
       name: 'Next.js', 
@@ -25,7 +26,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(255,255,255,0.12)', 
       borderColor: 'group-hover:border-white/40',
       shadowColor: 'shadow-white/10',
-      logoUrl: 'https://cdn.simpleicons.org/nextdotjs/ffffff'
+      logoUrl: 'https://api.iconify.design/simple-icons:nextdotjs.svg?color=%23ffffff'
     },
     { 
       name: 'TypeScript', 
@@ -33,7 +34,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(49,120,198,0.15)', 
       borderColor: 'group-hover:border-[#3178C6]/40',
       shadowColor: 'shadow-[#3178C6]/10',
-      logoUrl: 'https://cdn.simpleicons.org/typescript/3178C6'
+      logoUrl: 'https://api.iconify.design/simple-icons:typescript.svg?color=%233178C6'
     },
     { 
       name: 'Tailwind CSS', 
@@ -41,7 +42,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(6,182,212,0.15)', 
       borderColor: 'group-hover:border-[#06B6D4]/40',
       shadowColor: 'shadow-[#06B6D4]/10',
-      logoUrl: 'https://cdn.simpleicons.org/tailwindcss/06B6D4'
+      logoUrl: 'https://api.iconify.design/simple-icons:tailwindcss.svg?color=%2306B6D4'
     },
     { 
       name: 'Node.js', 
@@ -49,7 +50,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(51,153,51,0.15)', 
       borderColor: 'group-hover:border-[#339933]/40',
       shadowColor: 'shadow-[#339933]/10',
-      logoUrl: 'https://cdn.simpleicons.org/nodedotjs/339933'
+      logoUrl: 'https://api.iconify.design/simple-icons:nodedotjs.svg?color=%23339933'
     },
     { 
       name: 'Laravel', 
@@ -57,7 +58,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(255,45,32,0.15)', 
       borderColor: 'group-hover:border-[#FF2D20]/40',
       shadowColor: 'shadow-[#FF2D20]/10',
-      logoUrl: 'https://cdn.simpleicons.org/laravel/FF2D20'
+      logoUrl: 'https://api.iconify.design/simple-icons:laravel.svg?color=%23FF2D20'
     },
     { 
       name: 'Python', 
@@ -65,7 +66,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(55,118,171,0.15)', 
       borderColor: 'group-hover:border-[#3776AB]/40',
       shadowColor: 'shadow-[#3776AB]/10',
-      logoUrl: 'https://cdn.simpleicons.org/python/3776AB'
+      logoUrl: 'https://api.iconify.design/simple-icons:python.svg?color=%233776AB'
     },
     { 
       name: 'PostgreSQL', 
@@ -73,7 +74,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(65,105,225,0.15)', 
       borderColor: 'group-hover:border-[#4169E1]/40',
       shadowColor: 'shadow-[#4169E1]/10',
-      logoUrl: 'https://cdn.simpleicons.org/postgresql/4169E1'
+      logoUrl: 'https://api.iconify.design/simple-icons:postgresql.svg?color=%234169E1'
     },
     { 
       name: 'MongoDB', 
@@ -81,7 +82,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(71,162,72,0.15)', 
       borderColor: 'group-hover:border-[#47A248]/40',
       shadowColor: 'shadow-[#47A248]/10',
-      logoUrl: 'https://cdn.simpleicons.org/mongodb/47A248'
+      logoUrl: 'https://api.iconify.design/simple-icons:mongodb.svg?color=%2347A248'
     },
     { 
       name: 'AWS Cloud', 
@@ -89,7 +90,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(255,153,0,0.15)', 
       borderColor: 'group-hover:border-[#FF9900]/40',
       shadowColor: 'shadow-[#FF9900]/10',
-      logoUrl: 'https://cdn.simpleicons.org/amazonwebservices/FF9900'
+      logoUrl: 'https://api.iconify.design/simple-icons:amazonwebservices.svg?color=%23FF9900'
     },
     { 
       name: 'Docker', 
@@ -97,7 +98,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(36,150,237,0.15)', 
       borderColor: 'group-hover:border-[#2496ED]/40',
       shadowColor: 'shadow-[#2496ED]/10',
-      logoUrl: 'https://cdn.simpleicons.org/docker/2496ED'
+      logoUrl: 'https://api.iconify.design/simple-icons:docker.svg?color=%232496ED'
     },
     { 
       name: 'Flutter Mobile', 
@@ -105,7 +106,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(2,86,155,0.15)', 
       borderColor: 'group-hover:border-[#02569B]/40',
       shadowColor: 'shadow-[#02569B]/10',
-      logoUrl: 'https://cdn.simpleicons.org/flutter/02569B'
+      logoUrl: 'https://api.iconify.design/simple-icons:flutter.svg?color=%2302569B'
     },
     { 
       name: 'React Native', 
@@ -113,7 +114,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(97,218,251,0.15)', 
       borderColor: 'group-hover:border-[#61DAFB]/40',
       shadowColor: 'shadow-[#61DAFB]/10',
-      logoUrl: 'https://cdn.simpleicons.org/react/61DAFB'
+      logoUrl: 'https://api.iconify.design/simple-icons:react.svg?color=%2361DAFB'
     },
     { 
       name: 'Java', 
@@ -121,7 +122,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(248,152,29,0.15)', 
       borderColor: 'group-hover:border-[#F8981D]/40',
       shadowColor: 'shadow-[#F8981D]/10',
-      logoUrl: 'https://cdn.simpleicons.org/java/F8981D'
+      logoUrl: 'https://api.iconify.design/logos:java.svg'
     },
     { 
       name: 'PHP', 
@@ -129,7 +130,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(119,123,180,0.15)', 
       borderColor: 'group-hover:border-[#777BB4]/40',
       shadowColor: 'shadow-[#777BB4]/10',
-      logoUrl: 'https://cdn.simpleicons.org/php/777BB4'
+      logoUrl: 'https://api.iconify.design/simple-icons:php.svg?color=%23777BB4'
     },
     { 
       name: 'WordPress', 
@@ -137,7 +138,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(33,117,155,0.15)', 
       borderColor: 'group-hover:border-[#21759B]/40',
       shadowColor: 'shadow-[#21759B]/10',
-      logoUrl: 'https://cdn.simpleicons.org/wordpress/21759B'
+      logoUrl: 'https://api.iconify.design/simple-icons:wordpress.svg?color=%2321759B'
     },
     { 
       name: 'Moodle', 
@@ -145,7 +146,7 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
       color: 'rgba(247,147,30,0.15)', 
       borderColor: 'group-hover:border-[#F7931E]/40',
       shadowColor: 'shadow-[#F7931E]/10',
-      logoUrl: 'https://cdn.simpleicons.org/moodle/F7931E'
+      logoUrl: 'https://api.iconify.design/simple-icons:moodle.svg?color=%23F7931E'
     },
   ];
 
@@ -252,13 +253,8 @@ export default function TechStack({ onViewTechDetail }: TechStackProps) {
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent blur-[0.2px]" />
 
                 {/* Centered beautiful logo */}
-                <div className="mb-3 relative z-10 flex items-center justify-center w-12 h-12">
-                  <img 
-                    src={tech.logoUrl} 
-                    alt={`${tech.name} logo`}
-                    className="w-10 h-10 object-contain transition-transform duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="mb-3 relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
+                  <TechLogo name={tech.name} className="w-8 h-8 shrink-0 transition-transform duration-500 group-hover:scale-110" />
                 </div>
 
                 {/* Minimal Technology Name */}

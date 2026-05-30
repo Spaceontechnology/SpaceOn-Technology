@@ -801,6 +801,8 @@ export default function TechnologyDetailPage({
   // States
   const [activeCaseIdx, setActiveCaseIdx] = useState(0);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
+  const [clutchError, setClutchError] = useState(false);
+  const [goodfirmsError, setGoodfirmsError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -962,12 +964,17 @@ export default function TechnologyDetailPage({
             {/* Clutch widget style */}
             <div className="flex items-center gap-4 bg-white/[0.02] border border-white/10 hover:border-white/15 px-6 py-4.5 rounded-2xl transition-all">
               <div className="w-11 h-11 bg-white flex items-center justify-center rounded-xl p-0.5 border border-white/15 overflow-hidden shrink-0 select-none">
-                <img 
-                  src="https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg" 
-                  alt="Clutch" 
-                  className="w-full h-full object-cover rounded-full" 
-                  referrerPolicy="no-referrer"
-                />
+                {!clutchError ? (
+                  <img 
+                    src="https://s3-us-west-1.amazonaws.com/upload.comparably.com/949487/companies/949487/logo_1659447060103.jpg" 
+                    alt="Clutch" 
+                    className="w-full h-full object-cover rounded-full" 
+                    referrerPolicy="no-referrer"
+                    onError={() => setClutchError(true)}
+                  />
+                ) : (
+                  <span className="text-xs font-black text-neutral-800 uppercase font-sans">C</span>
+                )}
               </div>
               <div className="text-left font-sans">
                 <span className="text-[18px] font-black text-white block leading-tight">4.9 / 5.0 Rating</span>
@@ -978,12 +985,17 @@ export default function TechnologyDetailPage({
             {/* GoodFirms widget style */}
             <div className="flex items-center gap-4 bg-white/[0.02] border border-white/10 hover:border-white/15 px-6 py-4.5 rounded-2xl transition-all">
               <div className="w-11 h-11 bg-white flex items-center justify-center rounded-xl p-1 border border-white/15 overflow-hidden shrink-0 select-none">
-                <img 
-                  src="https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png" 
-                  alt="GoodFirms" 
-                  className="w-full h-full object-contain" 
-                  referrerPolicy="no-referrer"
-                />
+                {!goodfirmsError ? (
+                  <img 
+                    src="https://images.g2crowd.com/uploads/product/image/18db0bd428eb8a49504c41e748e50b35/goodfirms.png" 
+                    alt="GoodFirms" 
+                    className="w-full h-full object-contain" 
+                    referrerPolicy="no-referrer"
+                    onError={() => setGoodfirmsError(true)}
+                  />
+                ) : (
+                  <span className="text-xs font-black text-neutral-800 uppercase font-sans">GF</span>
+                )}
               </div>
               <div className="text-left font-sans">
                 <span className="text-[18px] font-black text-white block leading-tight">98% Success Ratio</span>

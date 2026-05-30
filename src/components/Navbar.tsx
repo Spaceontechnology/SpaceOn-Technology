@@ -895,6 +895,7 @@ export default function Navbar({ onStartProject, onNavigate, onViewServiceDetail
   const [activeAiTab, setActiveAiTab] = useState('ai-dev');
   const [activeServicesTab, setActiveServicesTab] = useState('software-dev');
   const [activeIndustriesTab, setActiveIndustriesTab] = useState('healthcare');
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     if (!mobileMenuOpen) {
@@ -956,15 +957,27 @@ export default function Navbar({ onStartProject, onNavigate, onViewServiceDetail
           }}
         >
           {!isLoading && (
-            <motion.img 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              src="https://patelarsh.com/SpaceOn%20Logo/Light.png" 
-              alt="SPACEON" 
-              className="h-[34px] sm:h-[38px] md:h-[42px] lg:h-[46px] w-auto object-contain hover:opacity-95 transition-all duration-300 transform active:scale-98"
-              referrerPolicy="no-referrer"
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            />
+            logoError ? (
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#00df89] to-emerald-500 flex items-center justify-center text-black font-black text-sm tracking-tight shadow-[0_0_15px_rgba(0,223,137,0.3)] font-sans">
+                  S
+                </div>
+                <span className="text-white text-lg font-black font-sans leading-none tracking-wider group-hover:text-[#00df89] transition-colors">
+                  SPACE<span className="text-[#00df89]">ON</span>
+                </span>
+              </div>
+            ) : (
+              <motion.img 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                src="https://patelarsh.com/SpaceOn%20Logo/Light.png" 
+                alt="SPACEON" 
+                className="h-[34px] sm:h-[38px] md:h-[42px] lg:h-[46px] w-auto object-contain hover:opacity-95 transition-all duration-300 transform active:scale-98"
+                referrerPolicy="no-referrer"
+                onError={() => setLogoError(true)}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            )
           )}
         </div>
 
@@ -2304,11 +2317,29 @@ export default function Navbar({ onStartProject, onNavigate, onViewServiceDetail
             transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
             className="fixed inset-y-0 right-0 w-full sm:max-w-[380px] bg-white border-l border-neutral-200 z-40 p-6 pt-24 shadow-2xl flex flex-col justify-between overflow-y-auto text-neutral-900"
           >
-            <div className="flex flex-col gap-2 mt-4">
+            <div className="flex flex-col gap-2 mt-2">
+              {/* Brand Logo inside Mobile Drawer in high contrast */}
+              <div className="flex items-center gap-3.5 pb-5 mb-3 border-b border-neutral-100 select-none">
+                <div 
+                  onClick={() => {
+                    onNavigate('home');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 cursor-pointer"
+                >
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#00df89] to-emerald-500 flex items-center justify-center text-black font-black text-sm tracking-tight shadow-md">
+                    S
+                  </div>
+                  <span className="text-neutral-900 text-lg font-black font-sans leading-none tracking-wider">
+                    SPACE<span className="text-emerald-500">ON</span>
+                  </span>
+                </div>
+              </div>
+
               <div className="flex flex-col">
                 {[
                   { label: "AI", key: "ai" },
-                  { label: "Sevices", key: "services" },
+                  { label: "Services", key: "services" },
                   { label: "Technologies", key: "technologies" },
                   { label: "Industries", key: "industries" },
                   { label: "Resources", key: "resources" }

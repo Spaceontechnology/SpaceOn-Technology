@@ -7,6 +7,8 @@ import {
   Database, Terminal, Sparkles, AlertCircle, RefreshCw, BarChart2, Star
 } from 'lucide-react';
 
+import TechLogo from './TechLogo';
+
 interface InternalPageProps {
   onBack: () => void;
   onBookConsultation: (subject?: string) => void;
@@ -156,39 +158,39 @@ export function ServicesPage({ onBack, onBookConsultation }: InternalPageProps) 
             </div>
           </div>
 
-          {/* Right Floating Dashboard Card Mock */}
-          <div className="lg:col-span-5 relative">
+          {/* Right Floating Summary Highlights Card */}
+          <div className="lg:col-span-12 xl:col-span-5 relative mt-6 lg:mt-0">
             <div className="bg-[#080808]/90 border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden backdrop-blur-xl">
               <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-emerald-500/5 blur-[50px] rounded-full" />
               <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-emerald-450" />
-                  <span className="text-xs font-mono text-white/50">SYSTEM_METRICS // STATUS</span>
+                  <Terminal className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-mono text-white/50">PROJECT DELIVERY RATINGS</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 uppercase">
-                  ACTIVE
+                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 uppercase font-semibold">
+                  VERIFIED
                 </span>
               </div>
               <div className="space-y-4">
                 <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] font-mono text-white/40 block">LATENCY SPEED (AVG)</span>
-                    <span className="text-lg font-mono font-bold text-white">41.8 ms</span>
+                    <span className="text-[10px] font-mono text-white/40 block">AVERAGE SPEED-TO-MARKET</span>
+                    <span className="text-lg font-mono font-bold text-white">4 - 8 Weeks</span>
                   </div>
                   <BarChart2 className="w-6 h-6 text-emerald-400 opacity-60" />
                 </div>
                 <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] font-mono text-white/40 block">PIPELINE CONTINUITY</span>
-                    <span className="text-lg font-mono font-bold text-white">100.00%</span>
+                    <span className="text-[10px] font-mono text-white/40 block">CODE &amp; BUSINESS PROTECTION</span>
+                    <span className="text-lg font-mono font-bold text-white">100% IP Client Owned</span>
                   </div>
                   <Shield className="w-6 h-6 text-emerald-400 opacity-60" />
                 </div>
                 <div className="p-3 bg-white/[0.02] border border-white/5 rounded-lg">
-                  <span className="text-[10px] font-mono text-white/40 block mb-2">RUNNING AGENTS</span>
+                  <span className="text-[10px] font-mono text-white/40 block mb-2">COLLABORATION CHANNELS</span>
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    {['LTS_RAG', 'EXPO_HAPTIC', 'VORTEX_CORE'].map(a => (
-                      <span key={a} className="text-[10px] font-mono bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/70">
+                    {['Slack Syncs', 'GitHub Access', 'Daily Standups', 'Technical Audits'].map(a => (
+                      <span key={a} className="text-[10px] font-mono bg-[#00df89]/10 border border-emerald-500/20 px-2.5 py-1 rounded text-emerald-400 font-semibold">
                         {a}
                       </span>
                     ))}
@@ -1968,16 +1970,39 @@ export function TechnologiesPage({
           {filteredTech.map((tech, idx) => {
             const Icon = tech.icon;
             return (
-              <div 
+              <motion.div 
                 key={idx}
                 onClick={() => onViewTechDetail && onViewTechDetail(tech.id)}
-                className="bg-neutral-950/40 border border-white/5 hover:border-[#00df89]/30 px-6 py-6 rounded-2xl transition-all duration-300 shadow-2xl flex flex-col justify-between group cursor-pointer hover:-translate-y-0.5 hover:bg-neutral-900/60"
+                whileHover="hover"
+                variants={{
+                  hover: {
+                    scale: 1.025,
+                    y: -5,
+                    borderColor: 'rgba(0, 223, 137, 0.35)',
+                    backgroundColor: 'rgba(23, 23, 23, 0.85)',
+                    boxShadow: '0 20px 45px rgba(0, 223, 137, 0.12)'
+                  }
+                }}
+                transition={{ type: 'spring', stiffness: 380, damping: 25 }}
+                className="bg-neutral-950/40 border border-white/5 px-6 py-6 rounded-2xl shadow-2xl flex flex-col justify-between group cursor-pointer"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white/50 group-hover:bg-[#00df89]/10 group-hover:text-[#00df89] transition-all">
-                      <Icon className="w-5 h-5" />
-                    </div>
+                    <motion.div 
+                      variants={{
+                        hover: { 
+                          scale: 1.15,
+                          rotate: 4,
+                          backgroundColor: 'rgba(0, 223, 137, 0.15)',
+                          borderColor: 'rgba(0, 223, 137, 0.4)',
+                          boxShadow: '0 0 15px rgba(0, 223, 137, 0.3)'
+                        }
+                      }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                      className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white shrink-0"
+                    >
+                      <TechLogo name={tech.name} className="w-5 h-5" />
+                    </motion.div>
                     <div>
                       <h4 className="text-md font-bold text-white group-hover:text-[#00df89] transition-colors">{tech.name}</h4>
                       <span className="text-[9px] font-mono tracking-wider text-[#22C55E]/70 bg-[#22C55E]/5 border border-[#22C55E]/15 px-2 py-0.5 rounded-full uppercase mt-1 inline-block">
@@ -1999,7 +2024,7 @@ export function TechnologiesPage({
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -2029,21 +2054,21 @@ export function TechnologiesPage({
             <div className="border border-white/5 bg-black/60 rounded-3xl p-6 md:p-8 font-mono text-[11px] space-y-6 shadow-2xl overflow-hidden relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full" />
               <div className="flex items-center justify-between border-b border-white/5 pb-3">
-                <span className="text-white/40">// ARCHITECTURE SCHEMA 2026.05</span>
-                <span className="text-[#22C55E]">TUNNEL_SECURE</span>
+                <span className="text-white/40">// DEPLOYMENT ROUTING PIPELINE</span>
+                <span className="text-[#22C55E]">CORE_READY</span>
               </div>
               <div className="space-y-2">
                 <div className="p-2 bg-white/[0.02] border border-white/5 rounded text-white/70">
                   <span className="text-emerald-405 font-bold">[CLIENT_INGRESS]</span> &rarr; https_ssl_request (TLS_1.3)
                 </div>
                 <div className="p-2 bg-white/[0.02] border border-white/5 rounded text-white/70 ml-4">
-                  <span className="text-cyan-405 font-bold">[PROXY_ROUTER]</span> &rarr; Nginx Reverse Proxy (Port 3000)
+                  <span className="text-cyan-405 font-bold">[REVERSE_PROXY]</span> &rarr; Nginx Load Balancer (Port 3000 Ingress)
                 </div>
                 <div className="p-2 bg-[#22C55E]/5 border border-[#22C55E]/15 rounded text-white/90 ml-8">
-                  <span className="text-emerald-401 font-bold">[VORTEX_DAEMON]</span> &rarr; Authentication decrypt context &amp; token mapping
+                  <span className="text-emerald-401 font-bold">[APP_MIDDLEWARE]</span> &rarr; Secure authentication routing &amp; session token verification
                 </div>
                 <div className="p-2 bg-white/[0.02] border border-white/5 rounded text-white/70 ml-12">
-                  <span className="text-purple-405 font-bold">[PLATFORM_LEADER]</span> &rarr; Thread safe read/write to ACID Tuned PG_SQL
+                  <span className="text-purple-405 font-bold">[DATA_CONNECTOR]</span> &rarr; ACID compliant queries to cluster PostgreSQL DB
                 </div>
               </div>
             </div>

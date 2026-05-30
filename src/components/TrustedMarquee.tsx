@@ -4,42 +4,42 @@ export default function TrustedMarquee() {
   const companies = [
     { 
       name: 'Terraform Cloud', 
-      logoUrl: 'https://cdn.simpleicons.org/terraform/844FBA', 
+      logoUrl: 'https://api.iconify.design/simple-icons:terraform.svg?color=%23844FBA', 
       color: '#844FBA' 
     },
     { 
       name: 'Microsoft', 
-      logoUrl: 'https://cdn.simpleicons.org/microsoft/00A4EF', 
+      logoUrl: 'https://api.iconify.design/simple-icons:microsoft.svg?color=%2300A4EF', 
       color: '#00A4EF' 
     },
     { 
       name: 'Shopify Plus', 
-      logoUrl: 'https://cdn.simpleicons.org/shopify/96BF48', 
+      logoUrl: 'https://api.iconify.design/simple-icons:shopify.svg?color=%2396BF48', 
       color: '#96BF48' 
     },
     { 
       name: 'Stripe', 
-      logoUrl: 'https://cdn.simpleicons.org/stripe/635BFF', 
+      logoUrl: 'https://api.iconify.design/simple-icons:stripe.svg?color=%23635BFF', 
       color: '#635BFF' 
     },
     { 
       name: 'AWS Cloud', 
-      logoUrl: 'https://cdn.simpleicons.org/amazonwebservices/FF9900', 
+      logoUrl: 'https://api.iconify.design/simple-icons:amazonwebservices.svg?color=%23FF9900', 
       color: '#FF9900' 
     },
     { 
       name: 'OpenAI', 
-      logoUrl: 'https://cdn.simpleicons.org/openai/ffffff', 
+      logoUrl: 'https://api.iconify.design/simple-icons:openai.svg?color=%23ffffff', 
       color: '#ffffff' 
     },
     { 
       name: 'Netflix Scale', 
-      logoUrl: 'https://cdn.simpleicons.org/netflix/E50914', 
+      logoUrl: 'https://api.iconify.design/simple-icons:netflix.svg?color=%23E50914', 
       color: '#E50914' 
     },
     { 
       name: 'NVIDIA AI', 
-      logoUrl: 'https://cdn.simpleicons.org/nvidia/76B900', 
+      logoUrl: 'https://api.iconify.design/simple-icons:nvidia.svg?color=%2376B900', 
       color: '#76B900' 
     },
   ];
